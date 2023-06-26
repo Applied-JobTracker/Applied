@@ -1,13 +1,13 @@
-import db from '../models/myModel';
+const db = require('../models/myModel');
 
 const appsController = {
   getApps: async (req, res, next) => {
-    console.log('entered getApps in the appController middleare')
+    console.log('entered getApps in the appController middleare');
     const tableName = 'application';
     const query = `SELECT * FROM ${tableName}`;
     try {
       const result = await db.query(query);
-      console.log(result.rows)
+      console.log(result.rows);
       req.tableData = result.rows;
       return next();
     } catch (err) {
@@ -19,17 +19,15 @@ const appsController = {
   addApp: async (req, res, next) => {
     const tableName = 'application';
     const values = [
-      req.params.application_id,
+      req.body.company_name,
       req.body.date,
       req.body.app_form,
       req.body.stack,
-      req.user.user_id,
+      req.body.user_id,
     ];
-    const addAppQuery = `INSERT INTO ${tableName}(application_id, company_name, date, app_form, stack, user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *`;
+    const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, user_id) VALUES($1, $2, $3, $4, $5)`;
     try {
       const result = await db.query(addAppQuery, values);
-      console.log(result.rows);
-      res.tableData = result.rows;
       return next();
     } catch (err) {
       console.error('Error executing addApp query:', err);
@@ -41,8 +39,17 @@ const appsController = {
     return next();
   },
 
-  deleteApp: (req, res, next) => {
-    return next();
+  deleteApp: async (req, res, next) => {
+    const tableName = 'application';
+    const { application_id } = req.params.application_id;
+    const deleteAppQuery = `DELETE FROM ${tableName} WHERE application_id = ${application_id}`;
+    try {
+      const result = await db.query(deleteAppQuery);
+      return next();
+    } catch (err) {
+      console.error('Error executing deleteApp query:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   },
 };
 
