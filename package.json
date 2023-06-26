@@ -1,0 +1,54 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "my-app",
+  "main": "index.js",
+  "scripts": {
+    "server": "NODE_ENV=production nodemon ./server/server.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --progress --color \" \"NODE_ENV=development nodemon ./server/server.js\"",
+    "build": "NODE_ENV=production webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kfan1/MessingAround.git"
+  },
+  "author": "Kevin Fan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kfan1/boiler_plate/issues"
+  },
+  "homepage": "https://github.com/kfan1/boiler_plate",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.2.3",
+    "concurrently": "^8.0.1",
+    "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-router-dom": "^6.11.1",
+    "style-loader": "^3.3.2",
+    "styled-components": "^5.3.10",
+    "webpack-cli": "^5.0.2",
+    "webpack-dev-server": "^4.13.3",
+    "webpack-hot-middleware": "^2.25.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.5",
+    "nodemon": "^2.0.22",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "webpack": "^5.82.0"
+  }
+}
