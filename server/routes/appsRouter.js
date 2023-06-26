@@ -2,11 +2,6 @@ const express = require('express');
 const appsRouter = express.Router();
 const appsController = require('../controllers/appsController');
 
-// appsRouter.use('/', myController.test, (req, res) => {
-//   console.log('in apps router');
-//   res.status(200).send('Hello world!');
-// });
-
 appsRouter.get('/', appsController.getApps, (req, res) => {
   res.status(200).send('Hello GET world!');
 });
