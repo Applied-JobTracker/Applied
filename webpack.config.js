@@ -29,7 +29,7 @@ module.exports = {
         target: 'http://localhost:3000/',
         secure: false,
       },
-      '/server/**': {
+      '/apps/**': {
         target: 'http://localhost:3000/',
         secure: false,
       },
