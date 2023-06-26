@@ -10,11 +10,11 @@ appsRouter.post('/', appsController.addApp, (req, res) => {
   res.status(201).send('Hello POST world!');
 });
 
-appsRouter.put('/:appId', appsController.editApp, (req, res) => {
+appsRouter.put('/:application_id', appsController.editApp, (req, res) => {
   res.status(204).send('Hello PUT world!');
 });
 
-appsRouter.delete('/:appId', appsController.deleteApp, (req, res) => {
+appsRouter.delete('/:application_id', appsController.deleteApp, (req, res) => {
   res.status(204).send('Hello PUT world!');
 });
 
