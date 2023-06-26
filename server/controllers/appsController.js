@@ -1,5 +1,8 @@
 const appsController = {
   getApps: (req, res, next) => {
+    const tableName = 'application'
+    const query = `SELECT * FROM ${tableName}`;
+
     return next();
   },
 
