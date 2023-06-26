@@ -1,10 +1,22 @@
-const mongoose = require('mongoose');
+const { Pool } = require('pg');
+require('dotenv').config();
 
-const Schema = mongoose.Schema;
+const PG_URI = process.env.PG_URI;
 
-const testSchema = new Schema({
-  myString: { type: String, required: true, unique: true, default: 'My String' },
-  myNumber: Number,
+const pool = new Pool({
+  connectionString: PG_URI,
 });
 
-module.exports = mongoose.model('test', testSchema);
+pool.connect((err) => {
+  if (err) console.error('Error connecting to database');
+  else console.log('connected to database');
+  return;
+});
+
+const db = {
+  query: async (string, params, callback) => {
+    return pool.query(string, params, callback);
+  },
+};
+
+module.exports = db;
