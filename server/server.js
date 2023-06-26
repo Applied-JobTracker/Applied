@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const myRouter = require('./routes/myRoute');
+const appsRouter = require('./routes/appsRouter');
 
 const PORT = process.env.PORT || 3000;
 
@@ -16,17 +16,23 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use('/assets', express.static(path.resolve(__dirname, '../src/assets')));
 
-app.use('/server', myRouter);
+app.use('/apps', appsRouter);
 
 // 404 error handler
-app.use((req, res) => {
-  res.status(404).send("This is not the page you're looking for");
+app.use('*', (req, res) => {
+  res.status(404).send("This page can't be found");
 });
 
 // Global error handler
 app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).send({ error: err });
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 400,
+    message: { err: 'An unknown error occurred' },
+  };
+  const errorObj = Object.assign(defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
 // Starting server
