@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/LoginPage.css'
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -16,6 +17,7 @@ export default function LoginPage() {
   };
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
+    console.log('username', username, 'password', password)
     try {
       const response = await fetch('/signup', {
         method: 'POST',
@@ -29,7 +31,7 @@ export default function LoginPage() {
         setUsername('');
         setPassword('');
         navigate('/home');
-      } else if  (reponse.status === 404){
+      } else if  (response.status === 404){
         alert('Username already exists, please select another');
         setUsername('');
       } else {
@@ -42,6 +44,7 @@ export default function LoginPage() {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    console.log('username', username, 'password', password)
     try {
       const response = await fetch('/login', {
         method: 'POST',
@@ -55,7 +58,7 @@ export default function LoginPage() {
         setUsername('');
         setPassword('');
         navigate('/home');
-      } else if  (reponse.status === 404){
+      } else if  (response.status === 404){
         alert('Invalid Username or Password');
         setUsername('');
         setPassword('')
@@ -69,7 +72,7 @@ export default function LoginPage() {
 
   return (
     <div className="login-container">
-      <form className="login-form">
+      <form className="login-form"  onSubmit={handleLoginSubmit}>
         <input
           className="form-field"
           required
@@ -80,6 +83,14 @@ export default function LoginPage() {
           value={username}
           onChange={handleUsernameChange}
         />
+        <button
+          className="form-field"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <form className='login-form' onSubmit={handleSignupSubmit}>
         <input
           className="form-field"
           required
@@ -93,14 +104,6 @@ export default function LoginPage() {
         <button
           className="form-field"
           type="submit"
-          onSubmit={handleLoginSubmit}
-        >
-          Login
-        </button>
-        <button
-          className="form-field"
-          type="submit"
-          onSubmit={handleSignupSubmit}
         >
           Signup
         </button>
