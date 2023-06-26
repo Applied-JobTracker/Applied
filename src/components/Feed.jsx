@@ -3,17 +3,23 @@ import FeedItem from './FeedItem';
 
 export default function Feed() {
   const feedItems = [];
-  // Query server/database for applications, which will be used to render individual FeedItems
-  // NOTE: CONFIRM ENDPOINT WITH BACKEND
-  fetch('/applications')
+  // Send a get request to the server at the '/apps' endpoint to get all applications in the database
+    // NOTE: might want to add logic to limit the number of responses 
+  fetch('/apps')
     // parse response from json to js
     .then(response => response.json())
-    // response data should look like an array of objects, but confirm with backend
-    // take response data and pass relevant info into a new array of feeditems
+    // NOTE: confirm with backend how the data is received, but assuming for now the response data is an array of objects
+    // iterate through response data, pushing individual FeedItems to the feedItems array with relevant props
     .then(response => {
       for (const app of response) {
-        // pass relevant info as props into FeedItem once the data is received from the backend
-        feedItems.push(<FeedItem />);
+        // NOTE: confirm how data is received from backend
+        feedItems.push(<FeedItem 
+          company={app.company}
+          date={app.date}
+          appType={app.appType}
+          stack={app.stack} 
+          appID={app.appID}
+        />);
       }
     })
     .catch(err => {
