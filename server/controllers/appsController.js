@@ -11,7 +11,10 @@ const appsController = {
       const result = await client.query(query);
       req.tableData = result.rows;
       return next();
-    } 
+    } catch (err) {
+      console.error('Error executing query:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
   },
 
   addApp: (req, res, next) => {
