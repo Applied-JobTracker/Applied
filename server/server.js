@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
 const appsRouter = require('./routes/appsRouter');
-
+const userRouter = require('./routes/userRouter');
 const PORT = process.env.PORT || 3000;
 /* UNCOMMENT THE FOLLOWING AFTER YOU INPUT A URI */
 
@@ -26,6 +26,7 @@ app.use('/assets', express.static(path.resolve(__dirname, '../src/assets')));
 
 app.use('/apps', appsRouter);
 
+app.use('/user', userRouter);
 // 404 error handler
 app.use('*', (req, res) => {
   res.status(404).send("This page can't be found");
