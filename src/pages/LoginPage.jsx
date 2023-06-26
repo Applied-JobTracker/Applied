@@ -5,6 +5,7 @@ import '../css/LoginPage.css'
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [userId, setUserId] = useState('');
 
   const navigate = useNavigate();
 
@@ -17,9 +18,10 @@ export default function LoginPage() {
   };
   const handleSignupSubmit = async (event) => {
     event.preventDefault();
+    console.log('signup submitted!')
     console.log('username', username, 'password', password)
     try {
-      const response = await fetch('/signup', {
+      const response = await fetch('/user/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +33,7 @@ export default function LoginPage() {
         setUsername('');
         setPassword('');
         navigate('/home');
-      } else if  (response.status === 404){
+      } else if  (response.status === 409){
         alert('Username already exists, please select another');
         setUsername('');
       } else {
@@ -44,9 +46,10 @@ export default function LoginPage() {
 
   const handleLoginSubmit = async (event) => {
     event.preventDefault();
+    console.log('login submitted!')
     console.log('username', username, 'password', password)
     try {
-      const response = await fetch('/login', {
+      const response = await fetch('/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,7 +61,7 @@ export default function LoginPage() {
         setUsername('');
         setPassword('');
         navigate('/home');
-      } else if  (response.status === 404){
+      } else if  (response.status === 409){
         alert('Invalid Username or Password');
         setUsername('');
         setPassword('')
@@ -83,12 +86,14 @@ export default function LoginPage() {
           value={username}
           onChange={handleUsernameChange}
         />
+        <div className='login-button-container'>
         <button
-          className="form-field"
+          className="login-button"
           type="submit"
         >
           Login
         </button>
+        </div>
       </form>
       <form className='login-form' onSubmit={handleSignupSubmit}>
         <input
@@ -102,7 +107,7 @@ export default function LoginPage() {
           onChange={handlePasswordChange}
         />
         <button
-          className="form-field"
+          className="signup-button"
           type="submit"
         >
           Signup
