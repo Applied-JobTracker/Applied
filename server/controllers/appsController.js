@@ -1,14 +1,13 @@
-const { Client } = require('pg');
-const connectionString = process.env.PG_URI;
-const client = new Client({ connectionString });
+import db from '../models/myModel';
 
 const appsController = {
   getApps: async (req, res, next) => {
+    console.log('entered getApps in the appController middleare')
     const tableName = 'application';
     const query = `SELECT * FROM ${tableName}`;
-
     try {
-      const result = await client.query(query);
+      const result = await db.query(query);
+      console.log(result.rows)
       req.tableData = result.rows;
       return next();
     } catch (err) {
