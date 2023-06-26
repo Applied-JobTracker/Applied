@@ -52,6 +52,7 @@ module.exports = {
     ],
   },
   plugins: [
+    // babel/plugin-syntax-jsx,
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
