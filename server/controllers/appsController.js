@@ -21,6 +21,10 @@ const appsController = {
   },
 
   editApp: (req, res, next) => {
+    console.log('entered editApps in the appController middleware');
+    const { company_name, date, app_form, stack} = req.body;
+    const tableName = 'application';
+    const query = `UPDATE ${tableName} SET company_name = ${company_name}, SET dat = ${date}, SET app_form = ${app_form} SET stack = ${stack}`;
     return next();
   },
 
