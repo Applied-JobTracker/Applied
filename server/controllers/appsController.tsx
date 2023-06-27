@@ -25,7 +25,8 @@ interface AppResponse extends Response {
 const appsController = {
   getApps: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const tableName = 'application';
-    const query = `SELECT * FROM ${tableName}`;
+    const user_id = req.params.user_id;
+    const query = `SELECT * FROM ${tableName}  WHERE user_id = ${user_id}`;
     try {
       const result: QueryResult = await db.query(query);
       res.locals.tableData = result.rows;
@@ -61,19 +62,30 @@ const appsController = {
     }
   },
 
+<<<<<<< HEAD:server/controllers/appsController.tsx
   editApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     console.log('entered editApps in the appController middleware');
     const { company_name, date, app_form, stack, application_id } = req.body;
+=======
+  editApp: async (req, res, next) => {
+    const { company_name, date, app_form, stack } = req.body;
+>>>>>>> dev:server/controllers/appsController.js
     const tableName = 'application';
-    const query = `UPDATE ${tableName} SET company_name = ${company_name}, SET dat = ${date}, SET app_form = ${app_form} SET stack = ${stack} WHERE application_id = ${application_id}`;
+    const { user_id, application_id } = req.params;
+    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE user_id = ${user_id} AND application_id = ${application_id} RETURNING *`;
     try {
+<<<<<<< HEAD:server/controllers/appsController.tsx
       const result: QueryResult = await db.query(query);
       console.log(result.rows);
       res.tableData = result.rows;
+=======
+      const result = await db.query(query);
+      res.locals.updatedTableData = result.rows[0];
+>>>>>>> dev:server/controllers/appsController.js
       return next();
     } catch (err) {
       return next({
-        log: `Error in userController.editApp: ${err}`,
+        log: `Error in appController.editApp: ${err}`,
         status: 500,
         message: 'Internal server error',
       });
