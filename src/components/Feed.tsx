@@ -1,10 +1,11 @@
 import * as React from 'react';
 import FeedItem from './FeedItem';
+import '../css/Feed.css';
 
 export default function Feed() {
   const feedItems : JSX.Element[] = [];
   // Send a get request to the server at the '/apps' endpoint to get all applications in the database
-    // NOTE: might want to add logic to limit the number of responses 
+  // NOTE: might want to add logic to limit the number of responses 
   fetch('/apps')
     // parse response from json to js
     .then(response => response.json())
@@ -27,7 +28,23 @@ export default function Feed() {
   });
 
   return (
-    <div>
+    <div className='feed'>
+      <h1>My Applications</h1>
+      {/* Delete the 3 manually rendered FeedItems below - temporary here for styling purposes */}
+      <FeedItem 
+        company={'Google'}
+        date={new Date()}
+        appType={'Easy apply'}
+        stack={'fullstack'} 
+        appID={'023779'}
+      />
+      <FeedItem 
+        company={'Google'}
+        date={new Date()}
+        appType={'Easy apply'}
+        stack={'fullstack'} 
+        appID={'023779'}
+      />
       <FeedItem 
         company={'Google'}
         date={new Date()}
