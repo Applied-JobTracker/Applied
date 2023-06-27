@@ -6,25 +6,24 @@ const userController = {};
 //save result in res.locals, even if user does not exist
 userController.checkUser = async (req, res, next) => {
   console.log('checkUser hit');
-  console.log(req.body);
   const { username, password } = req.body;
+
   if (!username || !password)
     return next({
       log: `Username or password not passed in to userController.checkUser: ${err}`,
-      status: 400,
+      status: 401,
       message: 'Please input a username and a password',
     });
 
   try {
     const queryString = 'SELECT user_id FROM users WHERE username=($1)';
     const result = await db.query(queryString, [username]);
-    // console.log('!!!!!!', result);
     res.locals.userExists = result.rows[0];
     return next();
   } catch (err) {
     return next({
       log: `Error in userController.checkUser: ${err}`,
-      status: 400,
+      status: 500,
       message: 'Error checking username',
     });
   }
@@ -37,11 +36,11 @@ userController.createAccount = async (req, res, next) => {
   if (res.locals.userExists)
     return next({
       log: 'username passed in to createAccount already exists',
-      status: 409,
+      status: 401,
       message: 'username already exists',
     });
+
   const { username, password } = req.body;
-  // console.log(req.body);
   try {
     const hashed = await bcrypt.hash(password, 10);
     const queryString =
@@ -58,8 +57,12 @@ userController.createAccount = async (req, res, next) => {
   }
 };
 
+//query database for user_id and password for passed in username
+//compare the hashed passwords to verify
+//if comparison is true, send user_id to front end else return error
 userController.verifyPassword = async (req, res, next) => {
   const { username, password } = req.body;
+
   try {
     const queryString =
       'SELECT user_id, password FROM users WHERE username=($1)';
@@ -70,9 +73,9 @@ userController.verifyPassword = async (req, res, next) => {
       return next();
     } else {
       return next({
-        log: `incorrect username and password combination ${err}`,
+        log: `incorrect username and password combination`,
         status: 401,
-        log: 'incorrect username or password',
+        message: 'incorrect username or password',
       });
     }
   } catch (err) {
