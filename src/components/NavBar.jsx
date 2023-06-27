@@ -10,6 +10,7 @@ export default function NavBar() {
   }
 
   return (
+    <div>
     <div id='bar-container'>
       <button className='bar-display'>
         My Applications        
@@ -17,7 +18,8 @@ export default function NavBar() {
       <button className='bar-display' onClick={handleNewAppClick}>
         New Application
       </button>
-      {showModal && <NewAppModal />}
+    </div>
+    {showModal && <NewAppModal />}
     </div>
   );
 }
