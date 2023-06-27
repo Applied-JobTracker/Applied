@@ -6,7 +6,7 @@ const appsController = {
     const query = `SELECT * FROM ${tableName}`;
     try {
       const result = await db.query(query);
-      req.tableData = result.rows;
+      res.locals.tableData = result.rows;
       return next();
     } catch (err) {
       return next({

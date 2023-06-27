@@ -3,7 +3,7 @@ const appsRouter = express.Router();
 const appsController = require('../controllers/appsController');
 
 appsRouter.get('/', appsController.getApps, (req, res) => {
-  res.sendStatus(200);
+  res.status(200).json(res.locals.tableData);
 });
 
 appsRouter.post('/', appsController.addApp, (req, res) => {
