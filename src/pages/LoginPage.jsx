@@ -36,7 +36,7 @@ export default function LoginPage() {
         setPassword('');
         setUserId(userId);
         navigate('/home', { state: { userId } });
-      } else if  (response.status === 409){
+      } else if  (response.status === 401){
         alert('Username already exists, please select another');
         setUsername('');
       } else {

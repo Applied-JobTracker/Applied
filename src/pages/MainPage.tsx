@@ -5,8 +5,7 @@ import NavBar from '../components/NavBar';
 export default function mainPage() {
   return (
     <div>
-      {/* Commenting out NavBar until it is defined and imported */}
-      {/* <NavBar /> */}
+      <NavBar />
       <Feed />
     </div>
   );
