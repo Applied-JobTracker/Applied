@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import FeedItem from './FeedItem';
 
 export default function Feed() {
-  const feedItems = [];
+  const feedItems : JSX.Element[] = [];
   // Send a get request to the server at the '/apps' endpoint to get all applications in the database
     // NOTE: might want to add logic to limit the number of responses 
   fetch('/apps')
@@ -28,7 +28,13 @@ export default function Feed() {
 
   return (
     <div>
-      <FeedItem />
+      <FeedItem 
+        company={'Google'}
+        date={new Date()}
+        appType={'Easy apply'}
+        stack={'fullstack'} 
+        appID={'023779'}
+      />
       {feedItems}
     </div>
   );
