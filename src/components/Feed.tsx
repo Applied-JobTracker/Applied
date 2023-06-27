@@ -1,8 +1,9 @@
 import * as React from 'react';
 import FeedItem from './FeedItem';
 import '../css/Feed.css';
+import { UserProps } from '../FrontendTypes';
 
-export default function Feed() {
+export default function Feed(props: UserProps) {
   const feedItems : JSX.Element[] = [];
   // Send a get request to the server at the '/apps' endpoint to get all applications in the database
   // NOTE: might want to add logic to limit the number of responses 

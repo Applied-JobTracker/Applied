@@ -6,8 +6,9 @@ const userController = {};
 //save result in res.locals, even if user does not exist
 userController.checkUser = async (req, res, next) => {
   console.log('checkUser hit');
+  
   const { username, password } = req.body;
-
+  console.log( {password})
   if (!username || !password)
     return next({
       log: `Username or password not passed in to userController.checkUser`,
