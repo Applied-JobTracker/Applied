@@ -1,0 +1,32 @@
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 3em;
+  align-items: center;
+}
+
+.form-field {
+  width: fit-content;
+  text-align: center;
+  margin-top: 1em;
+}
+
+#date-field {
+  width: 14em;
+  text-align: center;
+}
+
+.submit-button {
+  width: fit-content;
+  margin-top: 1em;
+  background-color: blue;
+  color: white;
+  border-radius: .5em;
+}
