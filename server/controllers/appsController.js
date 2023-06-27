@@ -4,10 +4,11 @@ const appsController = {
   getApps: async (req, res, next) => {
     const tableName = 'application';
     const user_id = req.params.user_id;
-    const query = `SELECT * FROM ${tableName} WHERE user_id = ${user_id}`;
+    const query = `SELECT * FROM ${tableName}  WHERE user_id = ${user_id}`;
     try {
       const result = await db.query(query);
       res.locals.tableData = result.rows;
+      console.log(res.locals.tableData)
       return next();
     } catch (err) {
       return next({
