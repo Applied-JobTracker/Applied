@@ -5,3 +5,7 @@ export interface FeedItemProps {
   stack: string;
   appID: string;
 }
+
+export type UserProps = {
+  userId: string;
+}
