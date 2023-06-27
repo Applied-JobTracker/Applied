@@ -17,7 +17,6 @@ const appsController = {
       });
     }
   },
-
   addApp: async (req, res, next) => {
     const tableName = "application";
     console.log("addApp controller req body", req.body);
@@ -41,7 +40,6 @@ const appsController = {
       });
     }
   },
-
   editApp: async (req, res, next) => {
     const { company_name, date, app_form, stack, progress } = req.body;
     const tableName = "application";
