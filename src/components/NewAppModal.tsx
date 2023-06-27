@@ -7,6 +7,7 @@ export default function NewAppModal({userId}: UserProps) {
   const [dateApplied, setDateApplied] = useState('');
   const [applyStyle, setApplyStyle] = useState('');
   const [stack, setStack] = useState('');
+  const [progress, setProgress] = useState('');
 
   const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setCompanyName(e.target.value);
@@ -20,7 +21,9 @@ export default function NewAppModal({userId}: UserProps) {
   const handleStackChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setStack(e.target.value);
   };
-  console.log('inside modal', {userId});
+  const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
+    setProgress(e.target.value);
+  };
 
   const addApplication = async (e: FormEvent) => {
     e.preventDefault();
@@ -36,6 +39,7 @@ export default function NewAppModal({userId}: UserProps) {
           date: dateApplied,
           app_form: applyStyle,
           stack: stack,
+          progress: progress,
           user_id: userId
         }),
       })
@@ -43,6 +47,7 @@ export default function NewAppModal({userId}: UserProps) {
       setDateApplied('');
       setApplyStyle('');
       setStack('');
+      setProgress('');
     } catch(err) {
       console.error(err);
     }
@@ -95,6 +100,21 @@ export default function NewAppModal({userId}: UserProps) {
           <option value="Full">Full</option>
           <option value="Frontend">Frontend</option>
           <option value="Backend">Backend</option>
+        </select>
+        <select
+          id="progress-field"
+          className="form-field"
+          required
+          name="progress"
+          placeholder="Progress"
+          value={progress}
+          onChange={handleProgressChange}
+        >
+          <option value="" disabled>Progress</option>
+          <option value="No Response">No Response</option>
+          <option value="Phone Interview Completed">Phone Interview Completed</option>
+          <option value="Technical Interview Completed">Technical Interview Completed</option>
+          <option value="Offer Received">Offer Received</option>
         </select>
         <button
           className="submit-button"

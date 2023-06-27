@@ -20,7 +20,10 @@
 
 #date-field {
   width: 14em;
-  text-align: center;
+}
+
+#progress-field {
+  width: 7em;
 }
 
 .submit-button {
