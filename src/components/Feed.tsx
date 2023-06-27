@@ -25,6 +25,7 @@ export default function Feed(props: UserProps) {
           appType={app.app_form}
           stack={app.stack} 
           appID={app.application_id}
+          progress={app.progress}
           key={app.application_id}
         />);
       }

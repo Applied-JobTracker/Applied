@@ -7,6 +7,7 @@ export default function EditModal(props: FeedItemDataProps) {
   const [dateApplied, setDateApplied] = useState('');
   const [applyStyle, setApplyStyle] = useState('');
   const [stack, setStack] = useState('');
+  const [progress, setProgress] = useState('');
 
   const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setCompanyName(e.target.value);
@@ -19,6 +20,9 @@ export default function EditModal(props: FeedItemDataProps) {
   };
   const handleStackChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setStack(e.target.value);
+  };
+  const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
+    setProgress(e.target.value);
   };
 
   const updateApplication = async (e: FormEvent) => {
@@ -36,6 +40,7 @@ export default function EditModal(props: FeedItemDataProps) {
           date: dateApplied,
           app_form: applyStyle,
           stack: stack,
+          progress: progress,
           app_id: props.appID,
         }),
       })
@@ -97,6 +102,21 @@ export default function EditModal(props: FeedItemDataProps) {
               onChange={handleStackChange}
             />
           </div>
+          <select
+            id="progress-field"
+            className="form-field"
+            required
+            name="progress"
+            placeholder={props.progress}
+            value={progress}
+            onChange={handleProgressChange}
+          >
+            <option value="" disabled>{props.progress}</option>
+            <option value="No Response">No Response</option>
+            <option value="Phone Interview Completed">Phone Interview Completed</option>
+            <option value="Technical Interview Completed">Technical Interview Completed</option>
+            <option value="Offer Received">Offer Received</option>
+          </select>
         </div>
         <div>
           <button

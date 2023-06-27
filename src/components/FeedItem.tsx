@@ -42,6 +42,7 @@ export default function FeedItem(props : FeedItemProps) {
           appType={props.appType}
           stack={props.stack} 
           appID={props.appID}
+          progress={props.progress}
           handleEditClick={handleEditClick}
         />}
       </div>
@@ -52,6 +53,7 @@ export default function FeedItem(props : FeedItemProps) {
           appType={props.appType}
           stack={props.stack} 
           appID={props.appID}
+          progress={props.progress}
           handleEditClick={handleEditClick}
         />}
       </div>

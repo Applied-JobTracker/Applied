@@ -6,6 +6,7 @@ export interface FeedItemProps {
   appType: string;
   stack: string;
   appID: string;
+  progress?: string;
 }
 
 export interface FeedItemDataProps {
@@ -14,6 +15,7 @@ export interface FeedItemDataProps {
   appType: string;
   stack: string;
   appID: string;
+  progress?: string;
   handleEditClick: MouseEventHandler;
 }
 
