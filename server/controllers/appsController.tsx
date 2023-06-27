@@ -1,11 +1,33 @@
-const db = require('../models/myModel');
+import { Request, Response, RequestHandler, NextFunction } from 'express';
+import { QueryResult } from 'pg';
+import db from '../models/myModel';
+
+interface AppRequest extends Request {
+  body: {
+    company_name: string;
+    date: Date;
+    app_form: string;
+    stack: string;
+    user_id: string;
+    application_id?: string;
+  };
+  params: {
+    application_id?: string;
+  };
+}
+
+interface AppResponse extends Response {
+  locals: {
+    tableData?: any;
+  };
+}
 
 const appsController = {
-  getApps: async (req, res, next) => {
+  getApps: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const tableName = 'application';
     const query = `SELECT * FROM ${tableName}`;
     try {
-      const result = await db.query(query);
+      const result: QueryResult = await db.query(query);
       res.locals.tableData = result.rows;
       return next();
     } catch (err) {
@@ -17,7 +39,7 @@ const appsController = {
     }
   },
 
-  addApp: async (req, res, next) => {
+  addApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const tableName = 'application';
     const values = [
       req.body.company_name,
@@ -28,7 +50,7 @@ const appsController = {
     ];
     const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, user_id) VALUES($1, $2, $3, $4, $5)`;
     try {
-      const result = await db.query(addAppQuery, values);
+      const result: QueryResult = await db.query(addAppQuery, values);
       return next();
     } catch (err) {
       return next({
@@ -39,15 +61,15 @@ const appsController = {
     }
   },
 
-  editApp: async (req, res, next) => {
+  editApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     console.log('entered editApps in the appController middleware');
     const { company_name, date, app_form, stack, application_id } = req.body;
     const tableName = 'application';
     const query = `UPDATE ${tableName} SET company_name = ${company_name}, SET dat = ${date}, SET app_form = ${app_form} SET stack = ${stack} WHERE application_id = ${application_id}`;
     try {
-      const result = await db.query(query);
+      const result: QueryResult = await db.query(query);
       console.log(result.rows);
-      req.tableData = result.rows;
+      res.tableData = result.rows;
       return next();
     } catch (err) {
       return next({
@@ -58,12 +80,12 @@ const appsController = {
     }
   },
 
-  deleteApp: async (req, res, next) => {
+  deleteApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const tableName = 'application';
-    const { application_id } = req.params.application_id;
+    const { application_id } = req.params;
     const deleteAppQuery = `DELETE FROM ${tableName} WHERE application_id = ${application_id}`;
     try {
-      const result = await db.query(deleteAppQuery);
+      const result: QueryResult = await db.query(deleteAppQuery);
       return next();
     } catch (err) {
       return next({

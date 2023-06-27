@@ -2,7 +2,7 @@ const express = require('express');
 const appsRouter = express.Router();
 const appsController = require('../controllers/appsController');
 
-appsRouter.get('/', appsController.getApps, (req, res) => {
+appsRouter.get('/:user_id', appsController.getApps, (req, res) => {
   res.status(200).json(res.locals.tableData);
 });
 
