@@ -6,11 +6,12 @@ const userController = {};
 //save result in res.locals, even if user does not exist
 userController.checkUser = async (req, res, next) => {
   console.log('checkUser hit');
+  
   const { username, password } = req.body;
-
+  console.log( {password})
   if (!username || !password)
     return next({
-      log: `Username or password not passed in to userController.checkUser: ${err}`,
+      log: `Username or password not passed in to userController.checkUser`,
       status: 401,
       message: 'Please input a username and a password',
     });
@@ -52,17 +53,23 @@ userController.createAccount = async (req, res, next) => {
     return next({
       log: `Error in userController.createAccount: ${err}`,
       status: 500,
-      message: { err: 'unable to create account' },
+      message: 'unable to create account',
     });
   }
 };
 
-//query database for user_id and password for passed in username
+//if checkUser does not find an account with passed in username, throw error
+//otherwise query database for user_id and password for passed in username
 //compare the hashed passwords to verify
 //if comparison is true, send user_id to front end else return error
 userController.verifyPassword = async (req, res, next) => {
   const { username, password } = req.body;
-
+  if (!res.locals.userExists)
+    return next({
+      log: `No account found with ${username}`,
+      status: 401,
+      message: 'Incorrect username or password',
+    });
   try {
     const queryString =
       'SELECT user_id, password FROM users WHERE username=($1)';

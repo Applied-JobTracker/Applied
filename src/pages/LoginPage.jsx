@@ -30,10 +30,13 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
+        console.log("response", response)
+        const userId = await response.json()
         setUsername('');
         setPassword('');
-        navigate('/home');
-      } else if  (response.status === 409){
+        setUserId(userId);
+        navigate('/home', { state: { userId } });
+      } else if  (response.status === 401){
         alert('Username already exists, please select another');
         setUsername('');
       } else {
@@ -58,9 +61,12 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
+        const userId = await response.json()
+        console.log('userId', userId);
         setUsername('');
         setPassword('');
-        navigate('/home');
+        setUserId(userId);
+        navigate('/home', { state: { userId } });
       } else if  (response.status === 409){
         alert('Invalid Username or Password');
         setUsername('');
