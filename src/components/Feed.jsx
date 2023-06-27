@@ -14,11 +14,11 @@ export default function Feed() {
       for (const app of response) {
         // NOTE: confirm how data is received from backend
         feedItems.push(<FeedItem 
-          company={app.company}
+          company={app.company_name}
           date={app.date}
-          appType={app.appType}
+          appType={app.app_form}
           stack={app.stack} 
-          appID={app.appID}
+          appID={app.application_id}
         />);
       }
     })
@@ -28,6 +28,7 @@ export default function Feed() {
 
   return (
     <div>
+      <FeedItem />
       {feedItems}
     </div>
   );

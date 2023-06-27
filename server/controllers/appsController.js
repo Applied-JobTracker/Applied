@@ -1,4 +1,4 @@
-import db from '../models/myModel';
+const db = require('../models/myModel');
 
 const appsController = {
   getApps: async (req, res, next) => {

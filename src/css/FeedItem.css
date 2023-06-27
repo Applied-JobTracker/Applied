@@ -1,0 +1,15 @@
+.feedItem {
+    border: 1px solid black;
+    width: 500px;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedButtons {
+    align-self:last baseline;
+}
+
+.feedButtons button {
+    margin: 5px;
+}
