@@ -8,7 +8,6 @@ const appsController = {
     try {
       const result = await db.query(query);
       res.locals.tableData = result.rows;
-      console.log(res.locals.tableData)
       return next();
     } catch (err) {
       return next({
@@ -42,7 +41,6 @@ const appsController = {
   },
 
   editApp: async (req, res, next) => {
-    console.log('Entered editApp in the appController middleware');
     const { company_name, date, app_form, stack } = req.body;
     const tableName = 'application';
     const { user_id, application_id } = req.params;
