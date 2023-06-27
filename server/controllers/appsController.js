@@ -20,6 +20,7 @@ const appsController = {
 
   addApp: async (req, res, next) => {
     const tableName = 'application';
+    console.log('addApp controller req body', req.body)
     const values = [
       req.body.company_name,
       req.body.date,

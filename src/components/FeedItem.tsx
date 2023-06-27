@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import '../css/FeedItem.css'
 import { FeedItemProps } from '../FrontendTypes';
 
@@ -13,7 +13,7 @@ export default function FeedItem(props : FeedItemProps) {
       
       {/* Edit App button - send request to the backend to update an App */}
       <div className='feedRightDiv'>
-        <p><span>Date Applied:</span> {props.date.toLocaleDateString('en-US')}</p>
+        <p><span>Date Applied:</span> {props.date}</p>
         <div className='feedButtons'>
           <button className='leftButton'>Edit</button>
           {/* Delete App button - send request to the backend to delete an App */}
