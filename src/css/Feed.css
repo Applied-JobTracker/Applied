@@ -1,0 +1,11 @@
+* {
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+}
+
+h1 {
+    text-align: center;
+}
+
+.feed {
+    width: 50%;
+}
