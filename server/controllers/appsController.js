@@ -42,18 +42,18 @@ const appsController = {
   },
 
   editApp: async (req, res, next) => {
-    console.log('entered editApps in the appController middleware');
-    const { company_name, date, app_form, stack, application_id } = req.body;
+    console.log('Entered editApp in the appController middleware');
+    const { company_name, date, app_form, stack } = req.body;
     const tableName = 'application';
-    const query = `UPDATE ${tableName} SET company_name = ${company_name}, SET dat = ${date}, SET app_form = ${app_form} SET stack = ${stack} WHERE application_id = ${application_id}`;
+    const { user_id, application_id } = req.params;
+    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE user_id = ${user_id} AND application_id = ${application_id} RETURNING *`;
     try {
       const result = await db.query(query);
-      console.log(result.rows);
-      req.tableData = result.rows;
+      res.locals.updatedTableData = result.rows[0];
       return next();
     } catch (err) {
       return next({
-        log: `Error in userController.editApp: ${err}`,
+        log: `Error in appController.editApp: ${err}`,
         status: 500,
         message: 'Internal server error',
       });
