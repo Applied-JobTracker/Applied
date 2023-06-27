@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import '../css/NavBar.css'
 import NewAppModal from './NewAppModal'
+import { UserProps } from '../FrontendTypes';
 
-export default function NavBar() {
+export default function NavBar(props: UserProps) {
   const [showModal, setShowModal] = useState(false);
 
   const handleNewAppClick = () => {
