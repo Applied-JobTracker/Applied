@@ -1,0 +1,19 @@
+#bar-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  justify-content: space-evenly;
+  position: sticky;
+  top: 0;
+  height: 5em;
+  align-items: center;
+  background-color: white;
+}
+
+.bar-display {
+  border: 1px solid black;
+  padding: 1em;
+  border-radius: .5em;
+  background-color: blue;
+  color: white;
+}
