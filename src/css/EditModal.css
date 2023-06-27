@@ -1,0 +1,12 @@
+.modal-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between; 
+    padding: 5px 25px;
+    background-color: white;
+}
+
+.modal-inputs {
+    display: flex;
+    flex-direction: column;
+}
