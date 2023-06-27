@@ -77,11 +77,15 @@ form {
 }
 
 button {
-  background-color: rgba(255, 0, 217, 0.574);
+  background-color: rgba(68, 0, 255, 0.574);
   color: white;
 }
 
 button:hover {
-  background-color: rgba(255, 0, 217, 0.846);
+  background-color: rgba(68, 0, 255, 0.905);
   cursor: pointer;
+}
+
+.submit-text {
+  color: rgba(165, 137, 243, 0.905);
 }

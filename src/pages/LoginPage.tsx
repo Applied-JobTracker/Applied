@@ -87,7 +87,7 @@ export default function LoginPage() {
           <h2>
             You are one step away from easy job application tracking!
             <br/>
-            Please use the form below to either Login or Signup
+            Please use the form below to either <span className="submit-text">Login</span> or <span className="submit-text">Signup</span>
           </h2>
         </div>
     <div className="login-container">
