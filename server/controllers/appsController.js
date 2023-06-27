@@ -1,13 +1,13 @@
-import db from '../models/myModel';
+const db = require('../models/myModel');
 
 const appsController = {
   getApps: async (req, res, next) => {
-    console.log('entered getApps in the appController middleare')
+    console.log('entered getApps in the appController middleare');
     const tableName = 'application';
     const query = `SELECT * FROM ${tableName}`;
     try {
       const result = await db.query(query);
-      console.log(result.rows)
+      console.log(result.rows);
       req.tableData = result.rows;
       return next();
     } catch (err) {
