@@ -1,6 +1,6 @@
 export interface FeedItemProps {
   company: string;
-  date: Date;
+  date: string;
   appType: string;
   stack: string;
   appID: string;

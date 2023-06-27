@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Feed from '../components/Feed';
 import NavBar from '../components/NavBar';
 import { useLocation } from 'react-router-dom';
