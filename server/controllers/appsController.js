@@ -4,7 +4,8 @@ const appsController = {
   getApps: async (req, res, next) => {
     console.log('entered getApps in the appController middleare');
     const tableName = 'application';
-    const query = `SELECT * FROM ${tableName}`;
+    const user_id = req.params.user_id;
+    const query = `SELECT * FROM ${tableName} WHERE user_id = ${user_id}`;
     try {
       const result = await db.query(query);
       console.log(result.rows);
