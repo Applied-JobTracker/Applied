@@ -14,10 +14,10 @@ export default function NewAppModal({userId}: UserProps) {
   const handleDateChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setDateApplied(e.target.value);
   };
-  const handleStyleChange = (e: ChangeEvent<HTMLInputElement>):void => {
+  const handleStyleChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setApplyStyle(e.target.value);
   };
-  const handleStackChange = (e: ChangeEvent<HTMLInputElement>):void => {
+  const handleStackChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setStack(e.target.value);
   };
   console.log('inside modal', {userId});
@@ -39,6 +39,10 @@ export default function NewAppModal({userId}: UserProps) {
           user_id: userId
         }),
       })
+      setCompanyName('');
+      setDateApplied('');
+      setApplyStyle('');
+      setStack('');
     } catch(err) {
       console.error(err);
     }
@@ -57,31 +61,41 @@ export default function NewAppModal({userId}: UserProps) {
         />
         <input
           className="form-field"
+          id="date-field"
           required
           name="dateApplied"
-          placeholder="Date Applied"
+          placeholder="Date Applied (dd/mm/yyyy)"
           type="text"
           value={dateApplied}
           onChange={handleDateChange}
+          pattern="\d{2}\/\d{2}\/\d{4}"
+          title="Please enter a date in the format dd/mm/yyyy"
         />
-        <input
+        <select
           className="form-field"
           required
           name="applicationStyle"
           placeholder="Application Style"
-          type="text"
           value={applyStyle}
           onChange={handleStyleChange}
-        />
-        <input
+        >
+          <option value="" disabled>Application Style</option>
+          <option value="Quick">Quick</option>
+          <option value="Codesmith">Codesmith</option>
+        </select>
+        <select
           className="form-field"
           required
           name="stack"
           placeholder="Stack"
-          type="text"
           value={stack}
           onChange={handleStackChange}
-        />
+        >
+          <option value="" disabled>Stack</option>
+          <option value="Full">Full</option>
+          <option value="Frontend">Frontend</option>
+          <option value="Backend">Backend</option>
+        </select>
         <button
           className="submit-button"
           type="submit"
