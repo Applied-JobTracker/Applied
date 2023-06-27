@@ -44,8 +44,8 @@ const appsController = {
   editApp: async (req, res, next) => {
     const { company_name, date, app_form, stack } = req.body;
     const tableName = 'application';
-    const { user_id, application_id } = req.params;
-    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE user_id = ${user_id} AND application_id = ${application_id} RETURNING *`;
+    const { application_id } = req.params;
+    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE application_id = ${application_id} RETURNING *`;
     try {
       const result = await db.query(query);
       res.locals.updatedTableData = result.rows[0];
