@@ -1,8 +1,8 @@
-const db = require('../models/myModel');
+const db = require("../models/myModel");
 
 const appsController = {
   getApps: async (req, res, next) => {
-    const tableName = 'application';
+    const tableName = "application";
     const user_id = req.params.user_id;
     const query = `SELECT * FROM ${tableName}  WHERE user_id = ${user_id}`;
     try {
@@ -13,22 +13,22 @@ const appsController = {
       return next({
         log: `Error in userController.getApp: ${err}`,
         status: 500,
-        message: 'Internal server error',
+        message: "Internal server error",
       });
     }
   },
-
   addApp: async (req, res, next) => {
-    const tableName = 'application';
-    console.log('addApp controller req body', req.body)
+    const tableName = "application";
+    console.log("addApp controller req body", req.body);
     const values = [
       req.body.company_name,
       req.body.date,
       req.body.app_form,
       req.body.stack,
+      req.body.progress,
       req.body.user_id,
     ];
-    const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, user_id) VALUES($1, $2, $3, $4, $5)`;
+    const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, progress, user_id) VALUES($1, $2, $3, $4, $5, $6)`;
     try {
       const result = await db.query(addAppQuery, values);
       return next();
@@ -36,11 +36,10 @@ const appsController = {
       return next({
         log: `Error in userController.addApp: ${err}`,
         status: 500,
-        message: 'Internal server error',
+        message: "Internal server error",
       });
     }
   },
-
   editApp: async (req, res, next) => {
     const { company_name, date, app_form, stack } = req.body;
     const tableName = 'application';
@@ -54,7 +53,7 @@ const appsController = {
       return next({
         log: `Error in appController.editApp: ${err}`,
         status: 500,
-        message: 'Internal server error',
+        message: "Internal server error",
       });
     }
   },
@@ -70,7 +69,7 @@ const appsController = {
       return next({
         log: `Error in userController.deleteApp: ${err}`,
         status: 500,
-        message: 'Internal server error',
+        message: "Internal server error",
       });
     }
   },
