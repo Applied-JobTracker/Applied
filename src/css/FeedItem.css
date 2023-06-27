@@ -24,11 +24,11 @@
     margin: 5px;
 }
 
-.feedButtons .rightButton {
+.feedButtons .redButton {
     margin-right: 0;
 }
 
-.leftButton {
+.greenButton {
   appearance: none;
   background-color: #2ea44f;
   border: 1px solid rgba(27, 31, 35, .15);
@@ -52,16 +52,16 @@
   white-space: nowrap;
 }
 
-.leftButton:hover {
+.greenButton:hover {
   background-color: #2c974b;
 }
 
-.leftButton:active {
+.greenButton:active {
   background-color: #298e46;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
-.rightButton {
+.redButton {
     appearance: none;
     background-color: #CB2027;
     border: 1px solid rgba(27, 31, 35, .15);
@@ -85,11 +85,11 @@
     white-space: nowrap;
   }
   
-  .rightButton:hover {
+  .redButton:hover {
     background-color: #b51016;
   }
   
-  .rightButton:active {
+  .redButton:active {
     background-color: #9a0e13;
     box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
   }

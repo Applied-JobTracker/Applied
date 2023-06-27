@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FeedItem from './FeedItem';
+import FeedItemContainer from './FeedItemContainer';
 import '../css/Feed.css';
 import { UserProps } from '../FrontendTypes';
 
@@ -18,8 +18,7 @@ export default function Feed(props: UserProps) {
     .then(response => {
       const array : JSX.Element[] = [];
       for (const app of response) {
-        // NOTE: confirm how data is received from backend
-        array.push(<FeedItem 
+        array.push(<FeedItemContainer 
           company={app.company_name}
           date={app.date}
           appType={app.app_form}

@@ -1,4 +1,4 @@
-.modal-container {
+.edit-modal-container {
     border: 1px solid black;
     display: flex;
     justify-content: space-between; 
@@ -6,7 +6,8 @@
     background-color: white;
 }
 
-.modal-inputs {
+.modal-input {
     display: flex;
-    flex-direction: column;
+    align-items: baseline;
+    gap: 5px;
 }
