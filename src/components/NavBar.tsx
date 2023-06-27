@@ -3,9 +3,8 @@ import '../css/NavBar.css'
 import NewAppModal from './NewAppModal'
 import { UserProps } from '../FrontendTypes';
 
-export default function NavBar(props: UserProps) {
+export default function NavBar({userId}: UserProps) {
   const [showModal, setShowModal] = useState(false);
-
   const handleNewAppClick = () => {
     setShowModal(!showModal);
   }
@@ -20,7 +19,7 @@ export default function NavBar(props: UserProps) {
         New Application
       </button>
     </div>
-    {showModal && <NewAppModal />}
+    {showModal && <NewAppModal userId={userId} />}
     </div>
   );
 }
