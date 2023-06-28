@@ -1,9 +1,9 @@
-import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useContext, MouseEvent } from 'react';
 import '../css/NewAppModal.css'
 import { UserProps } from '../FrontendTypes';
 import { Context } from '../Context';
 
-export default function NewAppModal({userId}: UserProps) {
+export default function NewAppModal({ userId, handleModal }: UserProps) {
   const [context, setContext] = useContext(Context);
   const [companyName, setCompanyName] = useState('');
   const [dateApplied, setDateApplied] = useState('');
@@ -25,6 +25,11 @@ export default function NewAppModal({userId}: UserProps) {
   };
   const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setProgress(e.target.value);
+  };
+  const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      handleModal();
+    }
   };
 
   const addApplication = async (e: FormEvent) => {
@@ -51,12 +56,13 @@ export default function NewAppModal({userId}: UserProps) {
       setStack('');
       setProgress('');
       setContext(true);
+      handleModal();
     } catch(err) {
       console.error(err);
     }
   }
   return (
-    <div className='modal-container'>
+    <div className='modal-container' onClick={handleModalClick}>
       <form className='modal-form' onSubmit={addApplication}>
       <input
           className="form-field"

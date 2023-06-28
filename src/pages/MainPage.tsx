@@ -20,7 +20,7 @@ export default function MainPage() {
   }
   
   return (
-    <div>
+    <div className="main-container">
       <NavBar userId={state.userId.user_id} />
       <Feed userId={state.userId.user_id} />
       <StatsContainer userId={state.userId.user_id}/>
