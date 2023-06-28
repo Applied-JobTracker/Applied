@@ -4,7 +4,7 @@ import { FeedItemProps } from '../FrontendTypes';
 import EditModal from './EditModal';
 import FeedItem from './FeedItem';
 
-export default function FeedItemContainer(props : FeedItemProps) {
+export default function FeedItemContainer( { company, date, appType, stack, appID, progress }: FeedItemProps) {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => {
     setShowModal(!showModal);
@@ -14,23 +14,23 @@ export default function FeedItemContainer(props : FeedItemProps) {
     <React.Fragment>
       <div>
         {!showModal && <FeedItem 
-          company={props.company}
-          date={props.date}
-          appType={props.appType}
-          stack={props.stack} 
-          appID={props.appID}
-          progress={props.progress}
+          company={company}
+          date={date}
+          appType={appType}
+          stack={stack} 
+          appID={appID}
+          progress={progress}
           toggleModal={toggleModal}
         />}
       </div>
       <div>
         {showModal && <EditModal 
-          company={props.company}
-          date={props.date}
-          appType={props.appType}
-          stack={props.stack} 
-          appID={props.appID}
-          progress={props.progress}
+          company={company}
+          date={date}
+          appType={appType}
+          stack={stack} 
+          appID={appID}
+          progress={progress}
           toggleModal={toggleModal}
         />}
       </div>
