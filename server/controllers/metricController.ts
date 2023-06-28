@@ -20,25 +20,28 @@ interface AppResponse extends Response {
   locals: {
     tableData?: {
       "Total Apps": string;
-      "Apps by Stack Percentage": string;
-      Full: string;
-      Frontend: string;
-      Backend: string;
-      "Response Rate": string;
-      "No Response": string;
-      "Any Response": string;
-      "Response Rate by App Style": string;
-      Regular: {
-        "No Response": string;
-        "Any Response": string;
+      "Apps by Stack Percentage": {
+        full: string;
+        frontend: string;
+        backend: string;
+      }
+      "Response Rate": {
+        noResponse: string;
+        anyResponse: string;
       };
-      Quick: {
-        "No Response": string;
-        "Any Response": string;
-      };
-      Codesmith: {
-        "No Response": string;
-        "Any Response": string;
+      "Response Rate by App Style": {
+        regular: {
+          noResponse: string;
+          anyResponse: string;
+        };
+        quick: {
+          noResponse: string;
+          anyResponse: string;
+        };
+        codesmith: {
+          noResponse: string;
+          anyResponse: string;
+        };
       };
     };
     updatedTableData?: { key: string; value: string };
@@ -93,25 +96,28 @@ const metricController = {
       res.locals = {
         tableData: {
           "Total Apps": totalApps.toString(),
-          "Apps by Stack Percentage": "",
-          Full: `${fullStackPercentage}%`,
-          Frontend: `${frontendStackPercentage}%`,
-          Backend: `${backendStackPercentage}%`,
-          "Response Rate": "",
-          "No Response": `${noResponseRate}%`,
-          "Any Response": `${anyResponseRate}%`,
-          "Response Rate by App Style": "",
-          Regular: {
-            "No Response": `${regularNoResponseRate}%`,
-            "Any Response": `${regularAnyResponseRate}%`,
+          "Apps by Stack Percentage": {
+            full: `${fullStackPercentage}%`,
+            frontend: `${frontendStackPercentage}%`,
+            backend: `${backendStackPercentage}%`,
           },
-          Quick: {
-            "No Response": `${quickNoResponseRate}%`,
-            "Any Response": `${quickAnyResponseRate}%`,
+          "Response Rate": {
+            noResponse: `${noResponseRate}%`,
+            anyResponse: `${anyResponseRate}%`,
           },
-          Codesmith: {
-            "No Response": `${codesmithNoResponseRate}%`,
-            "Any Response": `${codesmithAnyResponseRate}%`,
+          "Response Rate by App Style": {
+            regular: {
+              noResponse: `${regularNoResponseRate}%`,
+              anyResponse: `${regularAnyResponseRate}%`,
+            },
+            quick: {
+              noResponse: `${quickNoResponseRate}%`,
+              anyResponse: `${quickAnyResponseRate}%`,
+            },
+            codesmith: {
+              noResponse: `${codesmithNoResponseRate}%`,
+              anyResponse: `${codesmithAnyResponseRate}%`,
+            },
           },
         },
       };

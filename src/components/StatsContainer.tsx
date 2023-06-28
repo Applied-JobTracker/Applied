@@ -1,29 +1,29 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Context } from '../Context';
 import StatsSummary from './StatsSummary';
 import { UserProps } from '../FrontendTypes';
 
 export default function StatsContainer({ userId }: UserProps) {
     const [ context, setContext ] = useContext(Context);
+    const [ totalApps, setTotalApps ] = useState();
+    const [ stackPercentage, setStackPercentage ] = useState();
+    const [ responseRate, setResponseRate ] = useState();
+    const [ responseRateByAppStyle, setResponseRateByAppStyle ] = useState();
   
-    let statsSummary : JSX.Element;
+    let statsSummary : JSX.Element[] = [];
     // place the fetch request inside a useEffect, so Feed will rerender any time Context is updated
     useEffect(() => {
-      // send a get request to the server at [CONFIRM ENDPOINT WITH BACKEND] to get the summary stats object -> include the userID in the request somehow
-      fetch(`/apps/${userId}`)
+      // send a get request to the server at 'apps/stats/userId' to get the summary stats object
+      fetch(`/apps/stats/${userId}`)
       // parse response from json to js
       .then(response => response.json())
-      // parse response data, adding each stat as a prop in a new StatsSummary component
+      // parse response data, updating state with response data
       .then(response => {
-          // NOTE: will need to reconfigure response properties after the backend setup
-          statsSummary = <StatsSummary 
-            totalApps={response.totalApps} 
-            stackPercentage={response.stackPercentage} 
-            responseRate={response.responseRate} 
-            responseRateByAppStyle={response.responseRateByAppStyle}
-          />
-        // NOTE: might need to setContext(false) here, but if the Feed component is going to handle that on each rerender, then maybe not
-        // setContext(false);
+          setTotalApps(response['Total Apps']);
+          setStackPercentage(response['Apps by Stack Percentage']);
+          setResponseRate(response['Response Rate']);
+          setResponseRateByAppStyle(response['Response Rate by App Style']);
+        console.log(statsSummary)
       })
       .catch(err => {
         console.log('There was an error fetching summary stats: ', err);
@@ -33,7 +33,12 @@ export default function StatsContainer({ userId }: UserProps) {
     return (
       <div className='statsContainer'>
         <h3>Stats</h3>
-        {statsSummary}
+        <StatsSummary 
+            totalApps={totalApps} 
+            stackPercentage={stackPercentage} 
+            responseRate={responseRate} 
+            responseRateByAppStyle={responseRateByAppStyle}
+          />
       </div>
     );
   };
