@@ -134,11 +134,11 @@ export default function EditModal({ company, date, appType, stack, progress, app
           </div>
         <div>
           <div className='feedButtons'>
-            <button onClick={toggleModal} className='redButton'>
+            <button onClick={toggleModal} className='deleteButton'>
               Cancel
             </button>
             <button
-              className='greenButton'
+              className='editButton'
               type='submit'
             >
               Submit

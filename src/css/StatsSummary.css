@@ -1,0 +1,17 @@
+.statsSummary {
+  width: 30em;
+  margin-left: 35%;
+  overflow-y: auto;
+  height: 33em;
+  margin-top: 5em;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(68, 0, 255, 0.574);
+  transition: background-color 0.3s ease;
+  color: white;
+  text-align: center;
+}
+
+.statsSummary:hover {
+  background-color: rgba(68, 0, 255, 0.905);
+}

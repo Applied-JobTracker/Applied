@@ -3,11 +3,19 @@
     display: flex;
     justify-content: space-between; 
     padding: 5px 25px;
-    background-color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+    background-color: rgba(68, 0, 255, 0.574);
+    transition: background-color 0.3s ease;
+    color: white;
+}
+.feedItem:hover {
+  background-color: rgba(68, 0, 255, 0.905);
 }
 
 .feedItem span {
     font-weight: bold;
+    font-size: larger;
 }
 
 .feedRightDiv {
@@ -28,9 +36,9 @@
     margin-right: 0;
 }
 
-.greenButton {
+.editButton {
   appearance: none;
-  background-color: #2ea44f;
+  background-color: #902ea4;
   border: 1px solid rgba(27, 31, 35, .15);
   border-radius: 6px;
   box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -52,18 +60,13 @@
   white-space: nowrap;
 }
 
-.greenButton:hover {
-  background-color: #2c974b;
+.editButton:hover {
+  background-color: #6f207f;;
 }
 
-.greenButton:active {
-  background-color: #298e46;
-  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-}
-
-.redButton {
+.deleteButton {
     appearance: none;
-    background-color: #CB2027;
+    background-color: #db2476;
     border: 1px solid rgba(27, 31, 35, .15);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
@@ -85,11 +88,7 @@
     white-space: nowrap;
   }
   
-  .redButton:hover {
-    background-color: #b51016;
+  .deleteButton:hover {
+    background-color: #b4195e;
   }
   
-  .redButton:active {
-    background-color: #9a0e13;
-    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-  }

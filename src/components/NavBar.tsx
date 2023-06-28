@@ -17,7 +17,7 @@ export default function NavBar({userId}: UserProps) {
     <div>
     <div id='bar-container'>
       <button className='bar-display' onClick={() => navigate('/')}>
-        Return to Welcome Page      
+        Logout     
       </button>
       <button className='bar-display' onClick={handleModal}>
         Add New Application

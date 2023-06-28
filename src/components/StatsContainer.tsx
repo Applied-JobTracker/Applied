@@ -30,7 +30,6 @@ export default function StatsContainer({ userId }: UserProps) {
   
     return (
       <div className='statsContainer'>
-        <h3>Stats</h3>
         <StatsSummary 
           totalApps={totalApps} 
           stackPercentage={stackPercentage} 
