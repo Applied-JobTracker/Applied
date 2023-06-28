@@ -70,13 +70,13 @@ const metricController = {
       const result: QueryResult = await db.query(query);
       const row = result.rows[0];
       const totalApps = Number(row.total_apps);
-      const totalTraditional = Number(
-        row.traditional_no_response + row.traditional_any_response
-      );
-      const totalQuick = Number(row.quick_no_response + row.quick_any_response);
-      const totalCodesmith = Number(
-        row.codesmith_no_response + row.codesmith_any_response
-      );
+      const totalTraditional =
+        Number(row.traditional_no_response) +
+        Number(row.traditional_any_response);
+      const totalQuick =
+        Number(row.quick_no_response) + Number(row.quick_any_response);
+      const totalCodesmith =
+        Number(row.codesmith_no_response) + Number(row.codesmith_any_response);
       const fullStackPercentage = (
         (Number(row.full_stack) / totalApps) *
         100
@@ -97,6 +97,8 @@ const metricController = {
         (Number(row.any_response) / totalApps) *
         100
       ).toFixed(2);
+
+      //TRADTIONAL
       const traditionalNoResponseRate = (
         (Number(row.traditional_no_response) / totalTraditional) *
         100
@@ -105,6 +107,8 @@ const metricController = {
         (Number(row.traditional_any_response) / totalTraditional) *
         100
       ).toFixed(2);
+
+      //QUICK
       const quickNoResponseRate = (
         (Number(row.quick_no_response) / totalQuick) *
         100
@@ -113,6 +117,8 @@ const metricController = {
         (Number(row.quick_any_response) / totalQuick) *
         100
       ).toFixed(2);
+
+      //CODESMITH
       const codesmithNoResponseRate = (
         (Number(row.codesmith_no_response) / totalCodesmith) *
         100
