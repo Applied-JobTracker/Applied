@@ -3,7 +3,7 @@ import metricController from '../controllers/metricController';
 
 const metricRouter: Router = express.Router();
 
-metricRouter.get('/:user_id', metricController.getMetrics, (req, res) => {
+metricRouter.get('/stats/:user_id', metricController.getMetrics, (req, res) => {
     res.status(200).json(res.locals.tableData);
   });
 
