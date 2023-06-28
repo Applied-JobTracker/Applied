@@ -4,12 +4,12 @@ import '../css/StatsSummary.css'
 
 export default function StatsSummary({ totalApps, stackPercentage, responseRate, responseRateByAppStyle } : StatsProps) {
 	// this conditional is necessary to avoid errors on initial render when data fetch is incomplete and properties are undefined
+	console.log('totalApps', totalApps)
 	if (totalApps && stackPercentage && responseRate && responseRateByAppStyle) {
 		return (
 			<div className='statsSummary'>
 				<h1>Total Applications - {totalApps}</h1>
 				<h2>Apps by Stack</h2>
-					{/* wopd be great to sort these */}
 					<p>Full - {stackPercentage.full}</p>
 					<p>Frontend - {stackPercentage.frontend}</p>
 					<p>Backend - {stackPercentage.backend}</p>
