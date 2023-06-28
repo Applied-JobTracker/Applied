@@ -1,8 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
 import '../css/NewAppModal.css'
 import { UserProps } from '../FrontendTypes';
+import { Context } from '../Context';
 
 export default function NewAppModal({userId}: UserProps) {
+  const [context, setContext] = useContext(Context);
   const [companyName, setCompanyName] = useState('');
   const [dateApplied, setDateApplied] = useState('');
   const [applyStyle, setApplyStyle] = useState('');
@@ -48,6 +50,7 @@ export default function NewAppModal({userId}: UserProps) {
       setApplyStyle('');
       setStack('');
       setProgress('');
+      setContext(true);
     } catch(err) {
       console.error(err);
     }

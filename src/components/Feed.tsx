@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import FeedItemContainer from './FeedItemContainer';
 import '../css/Feed.css';
 import { UserProps } from '../FrontendTypes';
+import { Context } from '../Context';
 
 export default function Feed(props: UserProps) {
   const prevState : JSX.Element[] = [];
   const [ feedItems, setFeedItems ] = useState(prevState);
+  const [ context, setContext ] = useContext(Context);
 
   // place the fetch request inside a useEffect, so Feed will rerender any time feedItems is updated
   useEffect(() => {
@@ -30,11 +32,12 @@ export default function Feed(props: UserProps) {
       }
       // set feedItems to array
       setFeedItems(array);
+      setContext(false);
     })
     .catch(err => {
       console.log('There was an error fetching applications: ', err);
     });
-  }, [ feedItems ]);
+  }, [ context ]);
 
   return (
     <div className='feed'>

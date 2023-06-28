@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../css/FeedItem.css'
 import { FeedItemProps } from '../FrontendTypes';
+import { Context } from '../Context';
 
 export default function FeedItem(props : FeedItemProps) {
+  const [context, setContext] = useContext(Context);
   return (
     <div className='feedItem'>
       <div>
@@ -19,6 +21,7 @@ export default function FeedItem(props : FeedItemProps) {
           {/* Delete App button - send request to the backend to delete an App */}
           <button className='redButton' onClick={() => {
               fetch(`/apps/${props.appID}`, { method: 'DELETE' })
+              .then(() => setContext(true))
               .catch(err => {
                   console.log('There was an error deleting the application: ', err);
               });
