@@ -9,7 +9,7 @@ export default function NavBar({userId}: UserProps) {
   
   const navigate = useNavigate();
 
-  const handleNewAppClick = () => {
+  const handleModal = () => {
     setShowModal(!showModal);
   }
 
@@ -19,11 +19,11 @@ export default function NavBar({userId}: UserProps) {
       <button className='bar-display' onClick={() => navigate('/')}>
         Return to Welcome Page      
       </button>
-      <button className='bar-display' onClick={handleNewAppClick}>
+      <button className='bar-display' onClick={handleModal}>
         Add New Application
       </button>
     </div>
-    {showModal && <NewAppModal userId={userId} />}
+    {showModal && <NewAppModal userId={userId} handleModal={handleModal} />}
     </div>
   );
 }

@@ -12,6 +12,7 @@ export interface FeedItemProps {
 
 export type UserProps = {
   userId: string;
+  handleModal?: (value: void) => void;
 }
 
 export interface StatsProps {
