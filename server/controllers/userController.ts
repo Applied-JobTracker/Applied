@@ -60,7 +60,7 @@ const userController: UserController = {
     if (res.locals.userExists)
       return next({
         log: "username passed in to createAccount already exists",
-        status: 401,
+        status: 406,
         message: "username already exists",
       });
     const { username, password } = req.body;
