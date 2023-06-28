@@ -3,6 +3,7 @@ import Feed from '../components/Feed';
 import NavBar from '../components/NavBar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import StatsContainer from '../components/StatsContainer';
+import '../css/MainPage.css'
 
 export default function MainPage() {
   const navigate = useNavigate();
@@ -22,8 +23,10 @@ export default function MainPage() {
   return (
     <div className="main-container">
       <NavBar userId={state.userId.user_id} />
+      <div className='main-body'>
       <Feed userId={state.userId.user_id} />
       <StatsContainer userId={state.userId.user_id}/>
+      </div>
     </div>
   );
 }

@@ -1,30 +1,31 @@
 import React from 'react';
 import { StatsProps } from '../FrontendTypes';
+import '../css/StatsSummary.css'
 
 export default function StatsSummary({ totalApps, stackPercentage, responseRate, responseRateByAppStyle } : StatsProps) {
 	// this conditional is necessary to avoid errors on initial render when data fetch is incomplete and properties are undefined
 	if (totalApps && stackPercentage && responseRate && responseRateByAppStyle) {
 		return (
 			<div className='statsSummary'>
-				<ul>Total Apps: {totalApps}</ul>
-				<ul>Apps by Stack:</ul>
-					{/* would be great to sort these */}
-					<li>Full: {stackPercentage.full}</li>
-					<li>Frontend: {stackPercentage.frontend}</li>
-					<li>Backend: {stackPercentage.backend}</li>
-				<ul>Response Rate</ul>
-					<li>No Response: {responseRate.noResponse}</li>
-					<li>Any Response: {responseRate.anyResponse}</li>
-				<ul>Response Rate by App Style</ul>
-					<ul>Traditional:</ul>
-						<li>No Response: {responseRateByAppStyle.traditional.noResponse}</li>
-						<li>Any Response: {responseRateByAppStyle.traditional.anyResponse}</li>
-					<ul>Quick:</ul>
-						<li>No Response: {responseRateByAppStyle.quick.noResponse}</li>
-						<li>Any Response: {responseRateByAppStyle.quick.anyResponse}</li>
-					<ul>Codesmith:</ul>
-						<li>No Response: {responseRateByAppStyle.codesmith.noResponse}</li>
-						<li>Any Response: {responseRateByAppStyle.codesmith.anyResponse}</li>
+				<h1>Total Applications - {totalApps}</h1>
+				<h2>Apps by Stack</h2>
+					{/* wopd be great to sort these */}
+					<p>Full - {stackPercentage.full}</p>
+					<p>Frontend - {stackPercentage.frontend}</p>
+					<p>Backend - {stackPercentage.backend}</p>
+				<h2>Response Rate</h2>
+					<p>No Response - {responseRate.noResponse}</p>
+					<p>Any Response - {responseRate.anyResponse}</p>
+				<h2>Response Rate by App Style</h2>
+					<h3>Traditional</h3>
+						<p>No Response - {responseRateByAppStyle.traditional.noResponse}</p>
+						<p>Any Response - {responseRateByAppStyle.traditional.anyResponse}</p>
+					<h3>Quick</h3>
+						<p>No Response - {responseRateByAppStyle.quick.noResponse}</p>
+						<p>Any Response - {responseRateByAppStyle.quick.anyResponse}</p>
+					<h3>Codesmith</h3>
+						<p>No Response - {responseRateByAppStyle.codesmith.noResponse}</p>
+						<p>Any Response - {responseRateByAppStyle.codesmith.anyResponse}</p>
 			</div>
 		);
 	}
