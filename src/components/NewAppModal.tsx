@@ -85,6 +85,7 @@ export default function NewAppModal({userId}: UserProps) {
           onChange={handleStyleChange}
         >
           <option value="" disabled>Application Style</option>
+          <option value="Traditional">Traditional</option>
           <option value="Quick">Quick</option>
           <option value="Codesmith">Codesmith</option>
         </select>
@@ -115,6 +116,7 @@ export default function NewAppModal({userId}: UserProps) {
           <option value="Phone Interview Completed">Phone Interview Completed</option>
           <option value="Technical Interview Completed">Technical Interview Completed</option>
           <option value="Offer Received">Offer Received</option>
+          <option value="No Offer Received">No Offer Received</option>
         </select>
         <button
           className="submit-button"
