@@ -27,7 +27,7 @@ export default function StatsContainer({ userId }: UserProps) {
         console.log('There was an error fetching summary stats: ', err);
       });
     }, [ context ]);
-  
+  if (totalApps && totalApps > 0) {
     return (
       <div className='statsContainer'>
         <StatsSummary 
@@ -38,4 +38,6 @@ export default function StatsContainer({ userId }: UserProps) {
         />
       </div>
     );
-  };
+  }
+  return null;
+}
