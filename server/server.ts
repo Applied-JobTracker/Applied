@@ -9,6 +9,7 @@ import express, {
 import cookieParser from 'cookie-parser';
 import appsRouter from './routes/appsRouter';
 import userRouter from './routes/userRouter';
+import metricRouter from './routes/metricRouter';
 
 const PORT = process.env.PORT || 3000;
 const app: Express = express();
@@ -25,7 +26,10 @@ app.use('/assets', express.static(path.resolve(__dirname, '../src/assets')));
 
 app.use('/apps', appsRouter);
 
+app.use('/apps', metricRouter);
+
 app.use('/user', userRouter);
+
 
 // 404 error handler
 app.use('*', (req, res) => {
