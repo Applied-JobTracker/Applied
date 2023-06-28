@@ -8,6 +8,7 @@ interface AppRequest extends Request {
     date: string;
     app_form: string;
     stack: string;
+    progress: string;
     user_id: string;
     application_id?: string;
   };
@@ -66,10 +67,10 @@ const appsController = {
   },
 
   editApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
-    const { company_name, date, app_form, stack } = req.body;
+    const { company_name, date, app_form, stack, progress } = req.body;
     const tableName = 'application';
     const { application_id } = req.params;
-    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE application_id = ${application_id} RETURNING *`;
+    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}', progress='${progress}' WHERE application_id = ${application_id} RETURNING *`;
     try {
       const result: QueryResult = await db.query(query);
       res.locals.updatedTableData = result.rows[0];
