@@ -59,8 +59,8 @@ const appsController = {
   },
 
   deleteApp: async (req, res, next) => {
-    const tableName = "application";
-    const { application_id } = req.params.application_id;
+    const tableName = 'application';
+    const { application_id } = req.params;
     const deleteAppQuery = `DELETE FROM ${tableName} WHERE application_id = ${application_id}`;
     try {
       const result = await db.query(deleteAppQuery);
