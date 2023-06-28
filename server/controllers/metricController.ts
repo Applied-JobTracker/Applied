@@ -57,8 +57,8 @@ const metricController = {
                               SUM(CASE WHEN stack = 'Backend' THEN 1 ELSE 0 END) AS backend_stack,
                               SUM(CASE WHEN progress = 'No Response' THEN 1 ELSE 0 END) AS no_response,
                               SUM(CASE WHEN progress != 'No Response' THEN 1 ELSE 0 END) AS any_response,
-                              SUM(CASE WHEN app_form = 'Regular' AND progress = 'No Response' THEN 1 ELSE 0 END) AS regular_no_response,
-                              SUM(CASE WHEN app_form = 'Regular' AND progress != 'No Response' THEN 1 ELSE 0 END) AS regular_any_response,
+                              SUM(CASE WHEN app_form = 'Traditional' AND progress = 'No Response' THEN 1 ELSE 0 END) AS traditional_no_response,
+                              SUM(CASE WHEN app_form = 'Traditional' AND progress != 'No Response' THEN 1 ELSE 0 END) AS traditional_any_response,
                               SUM(CASE WHEN app_form = 'Quick' AND progress = 'No Response' THEN 1 ELSE 0 END) AS quick_no_response,
                               SUM(CASE WHEN app_form = 'Quick' AND progress != 'No Response' THEN 1 ELSE 0 END) AS quick_any_response,
                               SUM(CASE WHEN app_form = 'Codesmith' AND progress = 'No Response' THEN 1 ELSE 0 END) AS codesmith_no_response,
@@ -80,10 +80,10 @@ const metricController = {
         (Number(row.no_response) / totalApps) * 100).toFixed(2);
       const anyResponseRate = (
         (Number(row.any_response) / totalApps) * 100).toFixed(2);
-      const regularNoResponseRate = (
-        (Number(row.regular_no_response) / totalApps) * 100).toFixed(2);
-      const regularAnyResponseRate = (
-        (Number(row.regular_any_response) / totalApps) * 100).toFixed(2);
+      const traditionalNoResponseRate = (
+        (Number(row.traditional_no_response) / totalApps) * 100).toFixed(2);
+      const traditionalAnyResponseRate = (
+        (Number(row.traditional_any_response) / totalApps) * 100).toFixed(2);
       const quickNoResponseRate = (
         (Number(row.quick_no_response) / totalApps) * 100).toFixed(2);
       const quickAnyResponseRate = (
@@ -107,8 +107,8 @@ const metricController = {
           },
           "Response Rate by App Style": {
             regular: {
-              noResponse: `${regularNoResponseRate}%`,
-              anyResponse: `${regularAnyResponseRate}%`,
+              noResponse: `${traditionalNoResponseRate}%`,
+              anyResponse: `${traditionalAnyResponseRate}%`,
             },
             quick: {
               noResponse: `${quickNoResponseRate}%`,
