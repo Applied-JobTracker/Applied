@@ -30,7 +30,7 @@ interface AppResponse extends Response {
         anyResponse: string;
       };
       "Response Rate by App Style": {
-        regular: {
+        traditional: {
           noResponse: string;
           anyResponse: string;
         };
@@ -106,7 +106,7 @@ const metricController = {
             anyResponse: `${anyResponseRate}%`,
           },
           "Response Rate by App Style": {
-            regular: {
+            traditional: {
               noResponse: `${traditionalNoResponseRate}%`,
               anyResponse: `${traditionalAnyResponseRate}%`,
             },
