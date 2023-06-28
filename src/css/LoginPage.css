@@ -11,8 +11,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding-bottom: 10em;
+  height: 10vh;
+  margin-top: 2em;
 }
 
 .login-button {
@@ -42,3 +42,50 @@ body {
   flex-direction: column;
 }
 
+#intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#intro {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(3, 3, 3, 0.4);
+  transition: background-color 0.3s ease;
+  color: white;
+  padding: 4em;
+  height: 20em;
+}
+
+#intro:hover {
+  background-color: rgba(3, 3, 3, 0.8);
+}
+
+form {
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#intro-desc {
+  text-align: center;
+}
+
+button {
+  background-color: rgba(68, 0, 255, 0.574);
+  color: white;
+}
+
+button:hover {
+  background-color: rgba(68, 0, 255, 0.905);
+  cursor: pointer;
+}
+
+.submit-text {
+  color: rgba(165, 137, 243, 0.905);
+}

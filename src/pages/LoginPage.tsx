@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/LoginPage.css'
 
@@ -9,14 +9,14 @@ export default function LoginPage() {
 
   const navigate = useNavigate();
 
-  const handleUsernameChange = (event) => {
+  const handleUsernameChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
-  const handleSignupSubmit = async (event) => {
+  const handleSignupSubmit = async (event: FormEvent) => {
     event.preventDefault();
     console.log('signup submitted!')
     console.log('username', username, 'password', password)
@@ -47,7 +47,7 @@ export default function LoginPage() {
     }
   }
 
-  const handleLoginSubmit = async (event) => {
+  const handleLoginSubmit = async (event: FormEvent) => {
     event.preventDefault();
     console.log('login submitted!')
     console.log('username', username, 'password', password)
@@ -80,13 +80,22 @@ export default function LoginPage() {
   }
 
   return (
+  <div id="intro-container">
+    <div id="intro">
+      <h1>Welcome to Applied</h1>
+        <div id="intro-desc">
+          <h2>
+            You are one step away from easy job application tracking!
+            <br/>
+            Please use the form below to either <span className="submit-text">Login</span> or <span className="submit-text">Signup</span>
+          </h2>
+        </div>
     <div className="login-container">
       <form className="login-form"  onSubmit={handleLoginSubmit}>
         <input
           className="form-field"
           required
           name="username"
-          label="Username"
           placeholder="Enter your username"
           type="text"
           value={username}
@@ -106,7 +115,6 @@ export default function LoginPage() {
           className="form-field"
           required
           name="password"
-          label="Password"
           placeholder="Enter your password"
           type="text"
           value={password}
@@ -119,6 +127,8 @@ export default function LoginPage() {
           Signup
         </button>
       </form>
+      </div>
     </div>
+  </div>
   );
 }

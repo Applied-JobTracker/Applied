@@ -49,9 +49,10 @@ const appsController = {
       req.body.date,
       req.body.app_form,
       req.body.stack,
+      req.body.progress,
       req.body.user_id,
     ];
-    const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, user_id) VALUES($1, $2, $3, $4, $5)`;
+    const addAppQuery = `INSERT INTO ${tableName}(company_name, date, app_form, stack, progress, user_id) VALUES($1, $2, $3, $4, $5, $6)`;
     try {
       const result: QueryResult = await db.query(addAppQuery, values);
       return next();
@@ -67,8 +68,8 @@ const appsController = {
   editApp: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const { company_name, date, app_form, stack } = req.body;
     const tableName = 'application';
-    const { user_id, application_id } = req.params;
-    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE user_id = ${user_id} AND application_id = ${application_id} RETURNING *`;
+    const { application_id } = req.params;
+    const query = `UPDATE ${tableName} SET company_name = '${company_name}', date = '${date}', app_form = '${app_form}', stack = '${stack}' WHERE application_id = ${application_id} RETURNING *`;
     try {
       const result: QueryResult = await db.query(query);
       res.locals.updatedTableData = result.rows[0];

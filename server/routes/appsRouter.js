@@ -11,13 +11,9 @@ appsRouter.post('/', appsController.addApp, (req, res) => {
   res.sendStatus(201);
 });
 
-appsRouter.put(
-  '/:user_id/:application_id',
-  appsController.editApp,
-  (req, res) => {
-    res.status(200).json(res.locals.updatedTableData);
-  }
-);
+appsRouter.put('/:application_id', appsController.editApp, (req, res) => {
+  res.status(200).json(res.locals.updatedTableData);
+});
 
 appsRouter.delete('/:application_id', appsController.deleteApp, (req, res) => {
   res.sendStatus(204);
