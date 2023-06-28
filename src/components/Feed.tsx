@@ -4,7 +4,7 @@ import '../css/Feed.css';
 import { UserProps } from '../FrontendTypes';
 import { Context } from '../Context';
 
-export default function Feed(props: UserProps) {
+export default function Feed({ userId }: UserProps) {
   const prevState : JSX.Element[] = [];
   const [ feedItems, setFeedItems ] = useState(prevState);
   const [ context, setContext ] = useContext(Context);
@@ -13,7 +13,7 @@ export default function Feed(props: UserProps) {
   useEffect(() => {
     // send a get request to the server at the '/apps/user_id' endpoint to get all applications in the database for that user
     // NOTE: might want to add logic to limit the number of responses 
-    fetch(`/apps/${props.userId}`)
+    fetch(`/apps/${userId}`)
     // parse response from json to js
     .then(response => response.json())
     // iterate through response data, pushing individual FeedItems to an array with relevant props
@@ -41,7 +41,7 @@ export default function Feed(props: UserProps) {
 
   return (
     <div className='feed'>
-      <h1>My Applications</h1>
+      <h1 className="sticky-heading">My Applications</h1>
       {feedItems}
     </div>
   );
