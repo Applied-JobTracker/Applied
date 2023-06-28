@@ -85,7 +85,7 @@ export default function EditModal(props: FeedItemProps) {
             />
           </div>
           <div className='modal-input'>
-            <label htmlFor="applicationStyle" >Application Type: </label>  
+            <label htmlFor="applicationStyle" >Application Style: </label>  
             <select
               className="form-field"
               name="applicationStyle"

@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Context } from '../Context';
 import StatsSummary from './StatsSummary';
 import { UserProps } from '../FrontendTypes';
 
-export default function StatsContainer(props: UserProps) {
+export default function StatsContainer({ userId }: UserProps) {
     const [ context, setContext ] = useContext(Context);
   
     let statsSummary : JSX.Element;
     // place the fetch request inside a useEffect, so Feed will rerender any time Context is updated
     useEffect(() => {
       // send a get request to the server at [CONFIRM ENDPOINT WITH BACKEND] to get the summary stats object -> include the userID in the request somehow
-      fetch(`/apps/${props.userId}`)
+      fetch(`/apps/${userId}`)
       // parse response from json to js
       .then(response => response.json())
       // parse response data, adding each stat as a prop in a new StatsSummary component

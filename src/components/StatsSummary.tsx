@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StatsProps } from '../FrontendTypes';
 
-export default function StatsSummary(props : StatsProps) {
-  const { totalApps, stackPercentage, responseRate, responseRateByAppStyle} = props;
-  
+export default function StatsSummary({ totalApps, stackPercentage, responseRate, responseRateByAppStyle } : StatsProps) {
+
   return (
     <div className='statsSummary'>
         {/* CONFIRM PROPERTY NAMES WITH BACKEND FOR EACH STAT */}
