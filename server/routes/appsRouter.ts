@@ -1,7 +1,7 @@
-import express from 'express';
-import appsController from '../controllers/appsController.ts';
+import express, { Router } from 'express';
+import appsController from '../controllers/appsController';
 
-const appsRouter = express.Router();
+const appsRouter: Router = express.Router();
 
 appsRouter.get('/:user_id', appsController.getApps, (req, res) => {
   res.status(200).json(res.locals.tableData);
