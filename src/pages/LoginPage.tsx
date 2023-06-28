@@ -22,14 +22,16 @@ export default function LoginPage() {
     return passwordRegex.test(password);
   };
 
-  const handleSignupSubmit = async (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent, endpoint: string) => {
     event.preventDefault();
+    if (endpoint === '/create') {
     if (!validatePassword()) {
       alert('Password must be at least 8 characters long, include 1 uppercase letter, and 1 symbol.');
       return;
     }
+  }
     try {
-      const response = await fetch('/user/create', {
+      const response = await fetch(`/user${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,34 +45,9 @@ export default function LoginPage() {
         setPassword('');
         setUserId(userId);
         navigate('/home', { state: { userId } });
-      } else if  (response.status === 401){
+      } else if  (response.status === 406){
         alert('Username already exists, please select another');
         setUsername('');
-      } else {
-        console.error('Server error', response.statusText);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  const handleLoginSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-    try {
-      const response = await fetch('/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({ username, password }),
-      });
-      if (response.ok) {
-        const userId = await response.json()
-        setUsername('');
-        setPassword('');
-        setUserId(userId);
-        navigate('/home', { state: { userId } });
       } else if  (response.status === 401){
         alert('Invalid Username or Password');
         setUsername('');
@@ -95,7 +72,7 @@ export default function LoginPage() {
           </h2>
         </div>
     <div className="login-container">
-      <form className="login-form"  onSubmit={handleLoginSubmit}>
+      <form className="login-form"  onSubmit={(event) => handleSubmit(event, '/login')}>
         <input
           className="form-field"
           required
@@ -114,7 +91,7 @@ export default function LoginPage() {
         </button>
         </div>
       </form>
-      <form className='login-form' onSubmit={handleSignupSubmit}>
+      <form className='login-form' onSubmit={(event) => handleSubmit(event, '/create')}>
         <input
           className="form-field"
           required
