@@ -1,0 +1,15 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.Feed {
+  flex: 1;
+}

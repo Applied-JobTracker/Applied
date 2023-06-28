@@ -41,7 +41,6 @@ export default function Feed({ userId }: UserProps) {
 
   return (
     <div className='feed'>
-      <h1 className="sticky-heading">My Applications</h1>
       {feedItems}
     </div>
   );
