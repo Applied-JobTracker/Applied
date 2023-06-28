@@ -7,8 +7,8 @@ import express, {
   ErrorRequestHandler,
 } from 'express';
 import cookieParser from 'cookie-parser';
-import appsRouter from './routes/appsRouter';
-import userRouter from './routes/userRouter';
+import appsRouter from './routes/appsRouter.js';
+import userRouter from './routes/userRouter.js';
 
 const PORT = process.env.PORT || 3000;
 const app: Express = express();
@@ -26,6 +26,7 @@ app.use('/assets', express.static(path.resolve(__dirname, '../src/assets')));
 app.use('/apps', appsRouter);
 
 app.use('/user', userRouter);
+
 // 404 error handler
 app.use('*', (req, res) => {
   res.status(404).send("This page can't be found");
@@ -50,7 +51,6 @@ app.use(
   }
 );
 
-// Starting server
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}...`);
 });
