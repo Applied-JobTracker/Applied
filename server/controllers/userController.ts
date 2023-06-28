@@ -55,11 +55,7 @@ const userController: UserController = {
   },
   //check if username already exists
   //if not, continue with account creation and send user_id to frontend else send error saying username already exists
-  createAccount: async (
-    req: UserRequest,
-    res: Response,
-    next: NextFunction
-  ) => {
+  createAccount: async (req: UserRequest, res: Response, next: NextFunction) => {
     console.log("createAccount hit");
     if (res.locals.userExists)
       return next({
@@ -67,7 +63,6 @@ const userController: UserController = {
         status: 401,
         message: "username already exists",
       });
-
     const { username, password } = req.body;
     try {
       const hashed = await bcrypt.hash(password, 10);
@@ -89,11 +84,7 @@ const userController: UserController = {
   //otherwise query database for user_id and password for passed in username
   //compare the hashed passwords to verify
   //if comparison is true, send user_id to front end else return error
-  verifyPassword: async (
-    req: UserRequest,
-    res: Response,
-    next: NextFunction
-  ) => {
+  verifyPassword: async (req: UserRequest, res: Response, next: NextFunction) => {
     const { username, password } = req.body;
     if (!res.locals.userExists)
       return next({
