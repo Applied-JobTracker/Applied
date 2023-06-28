@@ -3,13 +3,13 @@ import '../css/EditModal.css'
 import { FeedItemProps } from '../FrontendTypes';
 import { Context } from '../Context';
 
-export default function EditModal(props: FeedItemProps) {
+export default function EditModal({ company, date, appType, stack, progress, appID, toggleModal }: FeedItemProps) {
   const [context, setContext] = useContext(Context);
-  const [companyName, setCompanyName] = useState(props.company);
-  const [dateApplied, setDateApplied] = useState(props.date);
-  const [applyStyle, setApplyStyle] = useState(props.appType);
-  const [stack, setStack] = useState(props.stack);
-  const [progress, setProgress] = useState(props.progress);
+  const [companyName, setCompanyName] = useState(company);
+  const [dateApplied, setDateApplied] = useState(date);
+  const [applyStyle, setApplyStyle] = useState(appType);
+  const [stackType, setStackType] = useState(stack);
+  const [progressStatus, setProgress] = useState(progress);
 
   const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setCompanyName(e.target.value);
@@ -21,7 +21,7 @@ export default function EditModal(props: FeedItemProps) {
     setApplyStyle(e.target.value);
   };
   const handleStackChange = (e: ChangeEvent<HTMLSelectElement>):void => {
-    setStack(e.target.value);
+    setStackType(e.target.value);
   };
   const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setProgress(e.target.value);
@@ -31,7 +31,7 @@ export default function EditModal(props: FeedItemProps) {
     e.preventDefault();
     console.log(progress);
     try {
-      await fetch(`/apps/${props.appID}`, {
+      await fetch(`/apps/${appID}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -40,9 +40,9 @@ export default function EditModal(props: FeedItemProps) {
           company_name: companyName,
           date: dateApplied,
           app_form: applyStyle,
-          stack: stack,
-          progress: progress,
-          app_id: props.appID,
+          stack: stackType,
+          progress: progressStatus,
+          app_id: appID,
         }),
       })
     } catch(err) {
@@ -54,7 +54,7 @@ export default function EditModal(props: FeedItemProps) {
     e.preventDefault();
     updateApplication(e);
     setContext(true);
-    props.toggleModal(e);
+    toggleModal(e);
   };
 
   return (
@@ -65,7 +65,7 @@ export default function EditModal(props: FeedItemProps) {
             <input
               className="form-field"
               name="companyname"
-              placeholder={props.company}
+              placeholder={company}
               type="text"
               value={companyName}
               onChange={handleCompanyNameChange}
@@ -76,7 +76,7 @@ export default function EditModal(props: FeedItemProps) {
             <input
               className="form-field"
               name="dateApplied"
-              placeholder={props.date}
+              placeholder={date}
               type="text"
               value={dateApplied}
               onChange={handleDateChange}
@@ -89,10 +89,11 @@ export default function EditModal(props: FeedItemProps) {
             <select
               className="form-field"
               name="applicationStyle"
-              placeholder={props.appType}
+              placeholder={appType}
               value={applyStyle}
               onChange={handleStyleChange}
             >
+              <option value="Traditional">Traditional</option>
               <option value="Quick">Quick</option>
               <option value="Codesmith">Codesmith</option>
             </select>
@@ -103,8 +104,8 @@ export default function EditModal(props: FeedItemProps) {
               className="form-field"
               required
               name="stack"
-              placeholder={props.stack}
-              value={stack}
+              placeholder={stack}
+              value={stackType}
               onChange={handleStackChange}
             >
               <option value="Full">Full</option>
@@ -119,20 +120,21 @@ export default function EditModal(props: FeedItemProps) {
                 className="form-field"
                 required
                 name="progress"
-                placeholder={props.progress}
-                value={progress}
+                placeholder={progress}
+                value={progressStatus}
                 onChange={handleProgressChange}
               >
                 <option value="No Response">No Response</option>
                 <option value="Phone Interview Completed">Phone Interview Completed</option>
                 <option value="Technical Interview Completed">Technical Interview Completed</option>
                 <option value="Offer Received">Offer Received</option>
+                <option value="No Offer Received">No Offer Received</option>
               </select>
             </div>
           </div>
         <div>
           <div className='feedButtons'>
-            <button onClick={props.toggleModal} className='redButton'>
+            <button onClick={toggleModal} className='redButton'>
               Cancel
             </button>
             <button
