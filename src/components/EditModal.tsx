@@ -85,7 +85,7 @@ export default function EditModal({ company, date, appType, stack, progress, app
             />
           </div>
           <div className='modal-input'>
-            <label htmlFor="applicationStyle" >Application Type: </label>  
+            <label htmlFor="applicationStyle" >Application Style: </label>  
             <select
               className="form-field"
               name="applicationStyle"
