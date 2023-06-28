@@ -9,7 +9,7 @@ export default function EditModal({ company, date, appType, stack, progress, app
   const [dateApplied, setDateApplied] = useState(date);
   const [applyStyle, setApplyStyle] = useState(appType);
   const [stackType, setStackType] = useState(stack);
-  const [progressStatus, setProgress] = useState(progress);
+  const [progressStatus, setProgressStatus] = useState(progress);
 
   const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>):void => {
     setCompanyName(e.target.value);
@@ -24,7 +24,7 @@ export default function EditModal({ company, date, appType, stack, progress, app
     setStackType(e.target.value);
   };
   const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
-    setProgress(e.target.value);
+    setProgressStatus(e.target.value);
   };
 
   const updateApplication = async (e: FormEvent) => {
