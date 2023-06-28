@@ -7,8 +7,8 @@ import express, {
   ErrorRequestHandler,
 } from 'express';
 import cookieParser from 'cookie-parser';
-import appsRouter from './routes/appsRouter.js';
-import userRouter from './routes/userRouter.js';
+import appsRouter from './routes/appsRouter';
+import userRouter from './routes/userRouter';
 
 const PORT = process.env.PORT || 3000;
 const app: Express = express();
