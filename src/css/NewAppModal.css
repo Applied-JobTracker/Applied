@@ -15,11 +15,17 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgba(68, 0, 255, 0.905);
+  transition: background-color 0.3s ease;
+  color: white;
   padding: 3em;
   align-items: center;
   justify-content: center;
   z-index: 1;
+}
+
+.modal-form:hover {
+  background-color: rgba(68, 0, 255, 0.999);
 }
 
 .form-field {
@@ -33,9 +39,30 @@
 }
 
 .submit-button {
-  width: fit-content;
-  margin-top: 1em;
-  background-color: blue;
-  color: white;
-  border-radius: .5em;
+    appearance: none;
+    background-color: #902ea4;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-top: 1em;
+}
+
+.submit-button:hover {
+  background-color: #6f207f;;
 }

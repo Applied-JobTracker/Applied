@@ -4,8 +4,8 @@
 
 .feed {
     width: 50%;
-    margin-left: 10%;
-    max-height: 40em;
+    margin-left: 5%;
+    max-height: 34em;
     overflow-y: auto;
     margin-top: 5em;
     border-radius: 5px;

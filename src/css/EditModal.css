@@ -3,9 +3,13 @@
     display: flex;
     justify-content: space-between; 
     padding: 5px 25px;
-    background-color: white;
-    color: black;
+    background-color: rgba(68, 0, 255, 0.574);
+    color: white;
 }
+
+.edit-modal-container:hover {
+    background-color: rgba(68, 0, 255, 0.905);
+  }
 
 .modal-input {
     display: flex;
