@@ -29,7 +29,7 @@ const appsController = {
   getApps: async (req: AppRequest, res: AppResponse, next: NextFunction) => {
     const tableName = 'application';
     const user_id = req.params.user_id;
-    const query = `SELECT * FROM ${tableName}  WHERE user_id = ${user_id}`;
+    const query = `SELECT * FROM ${tableName} WHERE user_id = ${user_id} ORDER BY date`;
     try {
       const result: QueryResult = await db.query(query);
       res.locals.tableData = result.rows;
