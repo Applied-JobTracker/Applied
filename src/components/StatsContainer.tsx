@@ -10,20 +10,18 @@ export default function StatsContainer({ userId }: UserProps) {
     const [ responseRate, setResponseRate ] = useState();
     const [ responseRateByAppStyle, setResponseRateByAppStyle ] = useState();
   
-    let statsSummary : JSX.Element[] = [];
-    // place the fetch request inside a useEffect, so Feed will rerender any time Context is updated
+    // place the fetch request inside a useEffect, so StatsContainer will rerender any time Context is updated
     useEffect(() => {
       // send a get request to the server at 'apps/stats/userId' to get the summary stats object
       fetch(`/apps/stats/${userId}`)
       // parse response from json to js
       .then(response => response.json())
-      // parse response data, updating state with response data
+      // parse response data, updating state with corresponding response data
       .then(response => {
-          setTotalApps(response['Total Apps']);
-          setStackPercentage(response['Apps by Stack Percentage']);
-          setResponseRate(response['Response Rate']);
-          setResponseRateByAppStyle(response['Response Rate by App Style']);
-        console.log(statsSummary)
+        setTotalApps(response['Total Apps']);
+        setStackPercentage(response['Apps by Stack Percentage']);
+        setResponseRate(response['Response Rate']);
+        setResponseRateByAppStyle(response['Response Rate by App Style']);
       })
       .catch(err => {
         console.log('There was an error fetching summary stats: ', err);
@@ -34,11 +32,11 @@ export default function StatsContainer({ userId }: UserProps) {
       <div className='statsContainer'>
         <h3>Stats</h3>
         <StatsSummary 
-            totalApps={totalApps} 
-            stackPercentage={stackPercentage} 
-            responseRate={responseRate} 
-            responseRateByAppStyle={responseRateByAppStyle}
-          />
+          totalApps={totalApps} 
+          stackPercentage={stackPercentage} 
+          responseRate={responseRate} 
+          responseRateByAppStyle={responseRateByAppStyle}
+        />
       </div>
     );
   };
