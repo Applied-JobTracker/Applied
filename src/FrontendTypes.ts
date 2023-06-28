@@ -27,7 +27,7 @@ export interface StatsProps {
     anyResponse: string,
   };
   responseRateByAppStyle: {
-    regular: {
+    traditional: {
       noResponse: string;
       anyResponse: string;
     }
