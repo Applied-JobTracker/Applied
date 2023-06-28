@@ -4,8 +4,7 @@ import NavBar from '../components/NavBar';
 import { useLocation } from 'react-router-dom';
 
 export default function mainPage() {
-  const {state} = useLocation()
-  console.log({state});
+  const {state} = useLocation();
   return (
     <div>
       <NavBar userId={state.userId.user_id} />
