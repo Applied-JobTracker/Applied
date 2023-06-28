@@ -17,9 +17,9 @@ export default function StatsSummary({ totalApps, stackPercentage, responseRate,
 					<p>No Response - {responseRate.noResponse}</p>
 					<p>Any Response - {responseRate.anyResponse}</p>
 				<h2>Response Rate by App Style</h2>
-					<h3>Regular</h3>
-						<p>No Response - {responseRateByAppStyle.regular.noResponse}</p>
-						<p>Any Response - {responseRateByAppStyle.regular.anyResponse}</p>
+					<h3>Traditional</h3>
+						<p>No Response - {responseRateByAppStyle.traditional.noResponse}</p>
+						<p>Any Response - {responseRateByAppStyle.traditional.anyResponse}</p>
 					<h3>Quick</h3>
 						<p>No Response - {responseRateByAppStyle.quick.noResponse}</p>
 						<p>Any Response - {responseRateByAppStyle.quick.anyResponse}</p>
