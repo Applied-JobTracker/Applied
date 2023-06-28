@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function NavBar({userId}: UserProps) {
   const [showModal, setShowModal] = useState(false);
+  
   const navigate = useNavigate();
+
   const handleNewAppClick = () => {
     setShowModal(!showModal);
   }

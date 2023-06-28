@@ -16,10 +16,18 @@ export default function LoginPage() {
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
+
+  const validatePassword = () => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleSignupSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log('signup submitted!')
-    console.log('username', username, 'password', password)
+    if (!validatePassword()) {
+      alert('Password must be at least 8 characters long, include 1 uppercase letter, and 1 symbol.');
+      return;
+    }
     try {
       const response = await fetch('/user/create', {
         method: 'POST',
@@ -30,7 +38,6 @@ export default function LoginPage() {
         body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        console.log("response", response)
         const userId = await response.json()
         setUsername('');
         setPassword('');
@@ -49,8 +56,6 @@ export default function LoginPage() {
 
   const handleLoginSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    console.log('login submitted!')
-    console.log('username', username, 'password', password)
     try {
       const response = await fetch('/user/login', {
         method: 'POST',
@@ -62,12 +67,11 @@ export default function LoginPage() {
       });
       if (response.ok) {
         const userId = await response.json()
-        console.log('userId', userId);
         setUsername('');
         setPassword('');
         setUserId(userId);
         navigate('/home', { state: { userId } });
-      } else if  (response.status === 409){
+      } else if  (response.status === 401){
         alert('Invalid Username or Password');
         setUsername('');
         setPassword('')
@@ -116,7 +120,7 @@ export default function LoginPage() {
           required
           name="password"
           placeholder="Enter your password"
-          type="text"
+          type="password"
           value={password}
           onChange={handlePasswordChange}
         />

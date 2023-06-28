@@ -5,15 +5,29 @@
   justify-content: space-evenly;
   position: sticky;
   top: 0;
-  height: 5em;
+  height: 7em;
   align-items: center;
-  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(3, 3, 3, 0.4);
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+#bar-container:hover {
+  background-color: rgba(3, 3, 3, 0.8);
 }
 
 .bar-display {
   border: 1px solid black;
   padding: 1em;
   border-radius: .5em;
-  background-color: blue;
+  background-color: rgba(68, 0, 255, 0.574);
   color: white;
+  font-size: large;
+}
+
+.bar-display:hover {
+  background-color: rgba(68, 0, 255, 0.905);
+  cursor: pointer;
 }
