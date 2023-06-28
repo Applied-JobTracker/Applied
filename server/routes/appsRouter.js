@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import appsController from '../controllers/appsController.ts';
+
 const appsRouter = express.Router();
-const appsController = require('../controllers/appsController');
 
 appsRouter.get('/:user_id', appsController.getApps, (req, res) => {
   res.status(200).json(res.locals.tableData);
@@ -18,4 +19,4 @@ appsRouter.delete('/:application_id', appsController.deleteApp, (req, res) => {
   res.sendStatus(204);
 });
 
-module.exports = appsRouter;
+export default appsRouter;

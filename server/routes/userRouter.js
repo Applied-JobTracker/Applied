@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import userController from '../controllers/userController.js';
+
 const userRouter = express.Router();
-const userController = require('../controllers/userController');
 
 userRouter.post(
   '/create',
@@ -20,4 +21,4 @@ userRouter.post(
   }
 );
 
-module.exports = userRouter;
+export default userRouter;

@@ -1,14 +1,14 @@
-const bcrypt = require('bcryptjs');
-const db = require('../models/myModel');
 const userController = {};
+import bcrypt from 'bcryptjs';
+import db from '../models/myModel.ts';
 
 //upon login or create account request, query database for account under username passed in
 //save result in res.locals, even if user does not exist
 userController.checkUser = async (req, res, next) => {
   console.log('checkUser hit');
-  
+
   const { username, password } = req.body;
-  console.log( {password})
+  console.log({ password });
   if (!username || !password)
     return next({
       log: `Username or password not passed in to userController.checkUser`,
@@ -94,4 +94,4 @@ userController.verifyPassword = async (req, res, next) => {
   }
 };
 
-module.exports = userController;
+export default userController;
