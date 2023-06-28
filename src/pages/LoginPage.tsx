@@ -24,10 +24,12 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: FormEvent, endpoint: string) => {
     event.preventDefault();
+    if (endpoint === '/create') {
     if (!validatePassword()) {
       alert('Password must be at least 8 characters long, include 1 uppercase letter, and 1 symbol.');
       return;
     }
+  }
     try {
       const response = await fetch(`/user${endpoint}`, {
         method: 'POST',
