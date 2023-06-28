@@ -1,8 +1,10 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent, useContext } from 'react';
 import '../css/EditModal.css'
 import { FeedItemProps } from '../FrontendTypes';
+import { Context } from '../Context';
 
 export default function EditModal(props: FeedItemProps) {
+  const [context, setContext] = useContext(Context);
   const [companyName, setCompanyName] = useState(props.company);
   const [dateApplied, setDateApplied] = useState(props.date);
   const [applyStyle, setApplyStyle] = useState(props.appType);
@@ -21,7 +23,6 @@ export default function EditModal(props: FeedItemProps) {
   const handleStackChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setStack(e.target.value);
   };
-  // BACKEND NEEDS TO ADD PROGRESS TO THE EDITAPP METHOD IN APPSCONTROLLER
   const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
     setProgress(e.target.value);
   };
@@ -52,6 +53,7 @@ export default function EditModal(props: FeedItemProps) {
   const handleSubmit = (e : any) => {
     e.preventDefault();
     updateApplication(e);
+    setContext(true);
     props.toggleModal(e);
   };
 
