@@ -1,15 +1,35 @@
 .main-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 .main-body {
-  flex: 1;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 10px;
+  width: 95%;
+  max-width: 1560px;
+  margin: 0 auto;
 }
 
-.Feed {
-  flex: 1;
+::-webkit-scrollbar {
+  width: 0.75rem;
+  background-color: rgb(186, 68, 155);
+  background-color: rgb(110, 8, 205);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: inset 0 0 0.2rem black;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #db2476;
+  border-radius: 0.75rem;
+}
+
+@media screen and (max-width: 992px) {
+  .main-body {
+    grid-template-columns: unset;
+  }
 }

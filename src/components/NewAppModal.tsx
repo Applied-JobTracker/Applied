@@ -1,5 +1,11 @@
-import React, { useState, ChangeEvent, FormEvent, useContext, MouseEvent } from 'react';
-import '../css/NewAppModal.css'
+import React, {
+  useState,
+  ChangeEvent,
+  FormEvent,
+  useContext,
+  MouseEvent,
+} from 'react';
+import '../css/NewAppModal.css';
 import { UserProps } from '../FrontendTypes';
 import { Context } from '../Context';
 
@@ -11,19 +17,19 @@ export default function NewAppModal({ userId, handleModal }: UserProps) {
   const [stack, setStack] = useState('');
   const [progress, setProgress] = useState('');
 
-  const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>):void => {
+  const handleCompanyNameChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setCompanyName(e.target.value);
   };
-  const handleDateChange = (e: ChangeEvent<HTMLInputElement>):void => {
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setDateApplied(e.target.value);
   };
-  const handleStyleChange = (e: ChangeEvent<HTMLSelectElement>):void => {
+  const handleStyleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     setApplyStyle(e.target.value);
   };
-  const handleStackChange = (e: ChangeEvent<HTMLSelectElement>):void => {
+  const handleStackChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     setStack(e.target.value);
   };
-  const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>):void => {
+  const handleProgressChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     setProgress(e.target.value);
   };
   const handleModalClick = (e: MouseEvent<HTMLDivElement>) => {
@@ -47,9 +53,9 @@ export default function NewAppModal({ userId, handleModal }: UserProps) {
           app_form: applyStyle,
           stack: stack,
           progress: progress,
-          user_id: userId
+          user_id: userId,
         }),
-      })
+      });
       setCompanyName('');
       setDateApplied('');
       setApplyStyle('');
@@ -57,83 +63,91 @@ export default function NewAppModal({ userId, handleModal }: UserProps) {
       setProgress('');
       setContext(true);
       handleModal();
-    } catch(err) {
+    } catch (err) {
       console.error(err);
     }
-  }
+  };
   return (
     <div className='modal-container' onClick={handleModalClick}>
       <form className='modal-form' onSubmit={addApplication}>
-      <input
-          className="form-field"
+        <h2>New Application</h2>
+        <input
+          className='form-field'
           required
-          name="companyname"
-          placeholder="Name of Company"
-          type="text"
+          name='companyname'
+          placeholder='Name of Company'
+          type='text'
           value={companyName}
           onChange={handleCompanyNameChange}
         />
         <input
-          className="form-field"
-          id="date-field"
+          className='form-field'
+          id='date-field'
           required
-          name="dateApplied"
-          placeholder="Date Applied (dd/mm/yyyy)"
-          type="text"
+          name='dateApplied'
+          placeholder='Date Applied (dd/mm/yyyy)'
+          type='text'
           value={dateApplied}
           onChange={handleDateChange}
-          pattern="\d{2}\/\d{2}\/\d{4}"
-          title="Please enter a date in the format dd/mm/yyyy"
+          pattern='\d{2}\/\d{2}\/\d{4}'
+          title='Please enter a date in the format dd/mm/yyyy'
         />
         <select
-          className="form-field"
+          className='form-field'
           required
-          name="applicationStyle"
-          placeholder="Application Style"
+          name='applicationStyle'
+          placeholder='Application Style'
           value={applyStyle}
           onChange={handleStyleChange}
         >
-          <option value="" disabled>Application Style</option>
-          <option value="Traditional">Traditional</option>
-          <option value="Quick">Quick</option>
-          <option value="Codesmith">Codesmith</option>
+          <option value='' disabled>
+            Application Style
+          </option>
+          <option value='Traditional'>Traditional</option>
+          <option value='Quick'>Quick</option>
+          <option value='Codesmith'>Codesmith</option>
         </select>
         <select
-          className="form-field"
+          className='form-field'
           required
-          name="stack"
-          placeholder="Stack"
+          name='stack'
+          placeholder='Stack'
           value={stack}
           onChange={handleStackChange}
         >
-          <option value="" disabled>Stack</option>
-          <option value="Full">Full</option>
-          <option value="Frontend">Frontend</option>
-          <option value="Backend">Backend</option>
+          <option value='' disabled>
+            Stack
+          </option>
+          <option value='Full'>Full</option>
+          <option value='Frontend'>Frontend</option>
+          <option value='Backend'>Backend</option>
         </select>
         <select
-          id="progress-field"
-          className="form-field"
+          id='progress-field'
+          className='form-field'
           required
-          name="progress"
-          placeholder="Progress"
+          name='progress'
+          placeholder='Progress'
           value={progress}
           onChange={handleProgressChange}
         >
-          <option value="" disabled>Progress</option>
-          <option value="No Response">No Response</option>
-          <option value="Phone Interview Completed">Phone Interview Completed</option>
-          <option value="Technical Interview Completed">Technical Interview Completed</option>
-          <option value="Offer Received">Offer Received</option>
-          <option value="No Offer Received">No Offer Received</option>
+          <option value='' disabled>
+            Progress
+          </option>
+          <option value='No Response'>No Response</option>
+          <option value='Phone Interview Completed'>
+            Phone Interview Completed
+          </option>
+          <option value='Technical Interview Completed'>
+            Technical Interview Completed
+          </option>
+          <option value='Offer Received'>Offer Received</option>
+          <option value='No Offer Received'>No Offer Received</option>
         </select>
-        <button
-          className="submit-button"
-          type="submit"
-        >
+        <button className='button submit-button' type='submit'>
           Submit
         </button>
       </form>
     </div>
-  )
+  );
 }

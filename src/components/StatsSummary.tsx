@@ -17,32 +17,53 @@ export default function StatsSummary({
     return (
       <div className='statsSummary'>
         <h1>Total Applications - {totalApps}</h1>
-        <h2>Apps by Stack</h2>
-        <p>Full - {stackPercentage.full}</p>
-        <p>Frontend - {stackPercentage.frontend}</p>
-        <p>Backend - {stackPercentage.backend}</p>
-        <h2>Response Rate</h2>
-        <p>No Response - {responseRate.noResponse}</p>
-        <p>Any Response - {responseRate.anyResponse}</p>
+        <div className='totalApps'>
+          <div>
+            <h2>Apps by Stack</h2>
+            <p>Full - {stackPercentage.full}</p>
+            <p>Frontend - {stackPercentage.frontend}</p>
+            <p>Backend - {stackPercentage.backend}</p>
+          </div>
+          <div>
+            <h2>Response Rate</h2>
+            <p>No Response - {responseRate.noResponse}</p>
+            <p>Any Response - {responseRate.anyResponse}</p>
+          </div>
+        </div>
         <h2>Response Rate by App Style</h2>
-        <h3>Traditional</h3>
-        <p>
-          No Response - {output(responseRateByAppStyle.traditional.noResponse)}
-        </p>
-        <p>
-          Any Response -{' '}
-          {output(responseRateByAppStyle.traditional.anyResponse)}
-        </p>
-        <h3>Quick</h3>
-        <p>No Response - {output(responseRateByAppStyle.quick.noResponse)}</p>
-        <p>Any Response - {output(responseRateByAppStyle.quick.anyResponse)}</p>
-        <h3>Codesmith</h3>
-        <p>
-          No Response - {output(responseRateByAppStyle.codesmith.noResponse)}
-        </p>
-        <p>
-          Any Response - {output(responseRateByAppStyle.codesmith.anyResponse)}
-        </p>
+        <div className='appStyles'>
+          <div>
+            <h3>Traditional</h3>
+            <p>
+              No Response -{' '}
+              {output(responseRateByAppStyle.traditional.noResponse)}
+            </p>
+            <p>
+              Any Response -{' '}
+              {output(responseRateByAppStyle.traditional.anyResponse)}
+            </p>
+          </div>
+          <div>
+            <h3>Quick</h3>
+            <p>
+              No Response - {output(responseRateByAppStyle.quick.noResponse)}
+            </p>
+            <p>
+              Any Response - {output(responseRateByAppStyle.quick.anyResponse)}
+            </p>
+          </div>
+          <div>
+            <h3>Codesmith</h3>
+            <p>
+              No Response -{' '}
+              {output(responseRateByAppStyle.codesmith.noResponse)}
+            </p>
+            <p>
+              Any Response -{' '}
+              {output(responseRateByAppStyle.codesmith.anyResponse)}
+            </p>
+          </div>
+        </div>
       </div>
     );
   }

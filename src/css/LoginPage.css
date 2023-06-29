@@ -3,7 +3,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 100vh;
+  min-height: calc(100vh - 16px);
 }
 
 .login-container {
@@ -19,7 +19,7 @@ body {
   display: flex;
   justify-content: center;
   width: 5em;
-  padding: .5em;
+  padding: 0.5em;
   margin-top: 2em;
 }
 
@@ -32,7 +32,7 @@ body {
   display: flex;
   justify-content: center;
   width: 5em;
-  padding: .5em;
+  padding: 0.5em;
   margin-top: 2em;
 }
 

@@ -1,47 +1,52 @@
 .feedItem {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between; 
-    padding: 5px 25px;
-    border-radius: 5px;
-    box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
-    background-color: rgba(68, 0, 255, 0.574);
-    transition: background-color 0.3s ease;
-    color: white;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 25px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(68, 0, 255, 0.574);
+  transition: background-color 0.3s ease;
+  color: white;
 }
+
 .feedItem:hover {
   background-color: rgba(68, 0, 255, 0.905);
 }
 
+.mobileDate {
+  display: none;
+}
+
 .feedItem span {
-    font-weight: bold;
-    font-size: larger;
+  font-weight: bold;
+  font-size: larger;
 }
 
 .feedRightDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .feedButtons {
-    align-self: last baseline;
+  align-self: last baseline;
 }
 
 .feedButtons button {
-    margin: 5px;
+  margin: 5px;
 }
 
 .feedButtons .redButton {
-    margin-right: 0;
+  margin-right: 0;
 }
 
-.editButton {
+.button {
   appearance: none;
   background-color: #902ea4;
-  border: 1px solid rgba(27, 31, 35, .15);
+  border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
@@ -60,35 +65,52 @@
   white-space: nowrap;
 }
 
-.editButton:hover {
-  background-color: #6f207f;;
+.button:hover {
+  background-color: #6f207f;
 }
 
 .deleteButton {
-    appearance: none;
-    background-color: #db2476;
-    border: 1px solid rgba(27, 31, 35, .15);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
+  background-color: #db2476;
+}
+
+.deleteButton:hover {
+  background-color: #b4195e;
+}
+
+@media screen and (max-width: 1325px) {
+  .feedItem {
+    flex-direction: column-reverse;
+  }
+
+  .feedRightDiv {
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .feedItem {
+    flex-direction: column;
+  }
+
+  .feedRightDiv {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .feedRightDiv > p {
+    display: none;
+  }
+
+  .mobileDate {
+    display: block;
     text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: middle;
-    white-space: nowrap;
+    margin-bottom: 2em;
   }
-  
-  .deleteButton:hover {
-    background-color: #b4195e;
+
+  .feedButtons {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-bottom: 16px;
   }
-  
+}

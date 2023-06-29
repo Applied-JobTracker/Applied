@@ -21,7 +21,7 @@
 .bar-display {
   border: 1px solid black;
   padding: 1em;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background-color: rgba(68, 0, 255, 0.574);
   color: white;
   font-size: large;
@@ -30,4 +30,14 @@
 .bar-display:hover {
   background-color: rgba(68, 0, 255, 0.905);
   cursor: pointer;
+}
+
+@media screen and (max-width: 576px) {
+  #bar-container {
+    height: 4em;
+  }
+
+  .bar-display {
+    padding: 0.7em;
+  }
 }
