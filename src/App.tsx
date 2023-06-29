@@ -11,7 +11,7 @@ function App() {
       <Context.Provider value={[context, setContext]}>
         <Routes>
           <Route path='/' element={<LoginPage />} />
-          <Route path='/home' element={<MainPage />}/>
+          <Route path='/home' element={<MainPage />} />
         </Routes>
       </Context.Provider>
     </div>
