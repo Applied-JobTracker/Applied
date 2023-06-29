@@ -46,6 +46,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
 #intro {
@@ -88,4 +90,31 @@ button:hover {
 
 .submit-text {
   color: rgba(165, 137, 243, 0.905);
+}
+
+@media screen and (max-width: 825px) {
+  br {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #intro-container {
+    width: 85%;
+  }
+
+  #intro {
+    width: 90%;
+    padding: 2em;
+    height: fit-content;
+    font-size: 0.9rem;
+  }
+
+  #intro-desc {
+    text-align: unset;
+  }
+
+  #intro-desc h2 {
+    font-size: 1.2rem;
+  }
 }
