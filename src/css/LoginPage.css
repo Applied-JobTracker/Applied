@@ -1,0 +1,120 @@
+body {
+  background-image: url('../assets/giphy.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: calc(100vh - 16px);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  margin-top: 2em;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  width: 5em;
+  padding: 0.5em;
+  margin-top: 2em;
+}
+
+.login-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signup-button {
+  display: flex;
+  justify-content: center;
+  width: 5em;
+  padding: 0.5em;
+  margin-top: 2em;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#intro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 95%;
+  margin: 0 auto;
+}
+
+#intro {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(3, 3, 3, 0.4);
+  transition: background-color 0.3s ease;
+  color: white;
+  padding: 4em;
+  height: 20em;
+}
+
+#intro:hover {
+  background-color: rgba(3, 3, 3, 0.8);
+}
+
+form {
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#intro-desc {
+  text-align: center;
+}
+
+button {
+  background-color: rgba(68, 0, 255, 0.574);
+  color: white;
+}
+
+button:hover {
+  background-color: rgba(68, 0, 255, 0.905);
+  cursor: pointer;
+}
+
+.submit-text {
+  color: rgba(165, 137, 243, 0.905);
+}
+
+@media screen and (max-width: 825px) {
+  br {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #intro-container {
+    width: 85%;
+  }
+
+  #intro {
+    width: 90%;
+    padding: 2em;
+    height: fit-content;
+    font-size: 0.9rem;
+  }
+
+  #intro-desc {
+    text-align: unset;
+  }
+
+  #intro-desc h2 {
+    font-size: 1.2rem;
+  }
+}

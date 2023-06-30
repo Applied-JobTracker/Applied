@@ -1,0 +1,71 @@
+.statsContainer {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 40px;
+}
+
+.statsSummary {
+  width: 30em;
+  overflow-y: auto;
+  height: 33em;
+  margin-top: 5em;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(68, 0, 255, 0.574);
+  transition: background-color 0.3s ease;
+  color: white;
+  text-align: center;
+}
+
+.statsSummary:hover {
+  background-color: rgba(68, 0, 255, 0.905);
+}
+
+@media screen and (max-width: 1200px) {
+  .statsSummary {
+    width: 25em;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .statsSummary {
+    width: 100%;
+    margin-top: 3em;
+  }
+
+  .totalApps {
+    display: flex;
+    justify-content: center;
+  }
+
+  .totalApps > div {
+    margin: 0 5%;
+  }
+
+  .appStyles {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .appStyles {
+    max-width: 80%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .totalApps {
+    flex-direction: column;
+  }
+  .appStyles {
+    flex-direction: column;
+  }
+
+  .statsSummary > h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+}

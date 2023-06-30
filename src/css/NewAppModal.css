@@ -1,0 +1,52 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(68, 0, 255, 0.905);
+  transition: background-color 0.3s ease;
+  color: white;
+  padding: 3em;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.modal-form > h2 {
+  margin-top: 0;
+}
+
+.modal-form:hover {
+  background-color: rgba(68, 0, 255, 0.999);
+}
+
+.form-field {
+  width: fit-content;
+  text-align: center;
+  margin-top: 1em;
+}
+
+#date-field {
+  width: 14em;
+}
+
+.submit-button {
+  margin-top: 1em;
+}
+
+.submit-button:hover {
+  background-color: #6f207f;
+}

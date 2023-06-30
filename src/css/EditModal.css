@@ -1,0 +1,18 @@
+.edit-modal-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between; 
+    padding: 5px 25px;
+    background-color: rgba(68, 0, 255, 0.574);
+    color: white;
+}
+
+.edit-modal-container:hover {
+    background-color: rgba(68, 0, 255, 0.905);
+  }
+
+.modal-input {
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}

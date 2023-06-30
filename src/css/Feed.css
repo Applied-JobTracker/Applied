@@ -1,0 +1,14 @@
+* {
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+.feed {
+  max-height: 34em;
+  overflow-y: auto;
+  margin-top: 5em;
+  border-radius: 5px;
+  box-shadow: 5px 5px 9px 7px rgba(0, 0, 0, 0.7);
+  background-color: rgba(3, 3, 3, 0.4);
+  transition: background-color 0.3s ease;
+}
