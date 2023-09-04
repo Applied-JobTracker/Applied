@@ -19,7 +19,9 @@ Welcome to Applied, the app that makes it simple to track your job applications.
 
 If you would like to use the live version of the app, please visit this link www.appliedjt.com
 
-![Applied1](https://github.com/Applied-JobTracker/Applied/assets/125281260/42f551c0-88c8-434e-8452-b937cfec1b21)
+![Applied1](https://github.com/Applied-JobTracker/Applied/assets/125281260/e71a429c-3bc8-44ae-a418-acba4158b848)
+
+![Applied2](https://github.com/Applied-JobTracker/Applied/assets/125281260/8b4a44d2-b0b1-482b-b8a2-df08827c651b)
 
 
 # Features
