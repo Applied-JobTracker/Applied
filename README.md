@@ -21,8 +21,7 @@ If you would like to use the live version of the app, please visit this link www
 
 ![Applied1](https://github.com/Applied-JobTracker/Applied/assets/125281260/e71a429c-3bc8-44ae-a418-acba4158b848)
 
-![Applied2](https://github.com/Applied-JobTracker/Applied/assets/125281260/8b4a44d2-b0b1-482b-b8a2-df08827c651b)
-
+![Applied2](https://github.com/Applied-JobTracker/Applied/assets/125281260/ce1b0856-af0e-4282-be78-5321458b6523)
 
 # Features
 - Applied allows for quick and safe signup/login so that you can keep track of your latest workouts via a Postgresql database.
