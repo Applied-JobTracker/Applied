@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.tsx",
   "scripts": {
-    "server": "NODE_ENV=production nodemon ./server/server.ts",
+    "start": "NODE_ENV=production nodemon ./server/server.ts",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --open --hot --color \" \"NODE_ENV=development nodemon ./server/server.ts\"",
     "build": "NODE_ENV=production webpack",
     "test": "jest"
