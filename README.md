@@ -19,6 +19,9 @@ Welcome to Applied, the app that makes it simple to track your job applications.
 
 If you would like to use the live version of the app, please visit this link www.appliedjt.com
 
+![Applied1](https://github.com/Applied-JobTracker/Applied/assets/125281260/42f551c0-88c8-434e-8452-b937cfec1b21)
+
+
 # Features
 - Applied allows for quick and safe signup/login so that you can keep track of your latest workouts via a Postgresql database.
 - After signing up and logging in, simply click the `Add New Application` button to add your first application.
