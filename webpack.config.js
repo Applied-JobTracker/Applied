@@ -66,6 +66,7 @@ module.exports = {
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/index.html'),
+      favicon: 'src/assets/icon.jpeg'
     }),
   ],
   performance: {
